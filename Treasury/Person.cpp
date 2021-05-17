@@ -1,34 +1,34 @@
 #include "Person.h"
 
-void Person::add_contract(Contract contr)
+void Person::addContract(Contract contr)
 {
-	all_payments += contr.value;
+	allPayments += contr.value;
 	contracts.append(contr);
 }
 
-void Person::del_contract(Contract contr)
+void Person::delContract(Contract contr)
 {
 	auto iter = contracts.begin();
 	while (iter != nullptr)
 	{
 		if (*iter == contr)
 		{
-			all_payments -= contr.value;
-			all_incomes_settled += contr.value;
+			allPayments -= contr.value;
+			allIncomesSettled += contr.value;
 			contracts.remove(iter);
 		}
 		iter++;
 	}
 }
 
-void Person::add_contr(Contract contr)
+void Person::addContr(Contract contr)
 {
-	add_contract(contr);
+	addContract(contr);
 }
 
-void Person::del_contr(Contract contr)
+void Person::delContr(Contract contr)
 {
-	del_contract(contr);
+	delContract(contr);
 }
 
 Person::Person(std::string nam, std::string surnam, int ag)

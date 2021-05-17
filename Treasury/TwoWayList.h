@@ -15,16 +15,16 @@ private:
 			class TwoWayList<T>;
 	private:
 		T value;
-		Node* next_node = nullptr;
-		Node* prev_node = nullptr;
-		void set_next(Node* next) noexcept
+		Node* nextNode = nullptr;
+		Node* prevNode = nullptr;
+		void setNext(Node* next) noexcept
 		{
-			next_node = next;
+			nextNode = next;
 		}
 
-		void set_prev(Node* prev) noexcept
+		void setPrev(Node* prev) noexcept
 		{
-			prev_node = prev;
+			prevNode = prev;
 		}
 	public:
 		Node(T val) noexcept
@@ -35,40 +35,40 @@ private:
 
 		~Node() = default;
 
-		T get_val() const noexcept
+		T getVal() const noexcept
 		{
 			return value;
 		}
 
-		Node* get_next() const noexcept
+		Node* getNext() const noexcept
 		{
-			return next_node;
+			return nextNode;
 		}
 
-		Node* get_prev() const noexcept
+		Node* getPrev() const noexcept
 		{
-			return prev_node;
+			return prevNode;
 		}
 
 		bool operator==(Node* node) const noexcept  // niepotrzebne
 		{
-			return (get_val() == node->get_val());
+			return (getVal() == node->getVal());
 		}
 
 		bool operator!=(Node* node) const noexcept // niepotrzebne
 		{
-			return (get_val() != node->get_val());
+			return (getVal() != node->getVal());
 		}
 	};
 	
-	Node* beg_nod;
-	Node* end_nod;
+	Node* begNod;
+	Node* endNod;
 	int len = 0;
 public:
 	class Iterator;
 
 	TwoWayList() noexcept
-		:beg_nod(nullptr), end_nod(nullptr)
+		:begNod(nullptr), endNod(nullptr)
 	{
 
 	}
@@ -83,9 +83,9 @@ public:
 
 	TwoWayList(const T& beg) noexcept
 	{
-		Node* new_node = new Node(beg);
-		beg_nod = new_node;
-		end_nod = new_node;
+		Node* newNode = new Node(beg);
+		begNod = newNode;
+		endNod = newNode;
 		len = 1;
 	}
 
@@ -94,7 +94,7 @@ public:
 		return len;
 	}
 
-	Node* get_node(int index) const  // supposed to be private, left public for tests
+	Node* getNode(int index) const  // supposed to be private, left public for tests
 	{
 		try
 		{
@@ -105,7 +105,7 @@ public:
 			TwoWayList<T>::Iterator iter = this->begin();
 			for (int i = 0; i < index; i++)
 				iter++;
-			return iter.get_node();
+			return iter.getNode();
 		}
 		catch (std::invalid_argument& e)
 		{
@@ -115,11 +115,11 @@ public:
 		}
 	}
 
-	T get_val(int index) const
+	T getVal(int index) const
 	{
 		try
 		{
-			return (this->get_node(index))->get_val();
+			return (this->getNode(index))->getVal();
 		}
 		catch (std::invalid_argument& e)
 		{
@@ -128,11 +128,11 @@ public:
 		}
 	}
 
-	void append_to_empty(const T& elem) noexcept
+	void appendToEmpty(const T& elem) noexcept
 	{
-		Node* new_node = new Node(elem);
-		beg_nod = new_node;
-		end_nod = new_node;
+		Node* newNode = new Node(elem);
+		begNod = newNode;
+		endNod = newNode;
 		len = 1;
 	}
 
@@ -140,30 +140,30 @@ public:
 	{
 		if (len == 0)
 		{
-			append_to_empty(elem);
+			appendToEmpty(elem);
 		}
 		else
 		{
-			Node* new_node = new Node(elem);
-			(*end_nod).set_next(new_node);
-			new_node->set_prev(end_nod);
-			end_nod = new_node;
+			Node* newNode = new Node(elem);
+			(*endNod).setNext(newNode);
+			newNode->setPrev(endNod);
+			endNod = newNode;
 			len++;
 		}
 	}
 
-	void add_to_begin(const T& elem) noexcept
+	void addToBegin(const T& elem) noexcept
 	{
 		if (len == 0)
 		{
-			append_to_empty(elem);
+			appendToEmpty(elem);
 		}
 		else
 		{
-			Node* new_node = new Node(elem);
-			(*beg_nod).set_prev(new_node);
-			new_node->set_next(beg_nod);
-			beg_nod = new_node;
+			Node* newNode = new Node(elem);
+			(*begNod).setPrev(newNode);
+			newNode->setNext(begNod);
+			begNod = newNode;
 			len++;
 		}
 
@@ -171,42 +171,42 @@ public:
 
 	void insert(Iterator iter, const T& elem) noexcept
 	{
-		if (iter == beg_nod)
+		if (iter == begNod)
 		{
-			add_to_begin(elem);
+			addToBegin(elem);
 		}
-		else if (iter == end_nod)
+		else if (iter == endNod)
 		{
 			append(elem);
 		}
 		else
 		{
-			Node* new_node = new Node(elem);
-			Node* f_node = iter.get_node()->get_prev();
-			Node* s_node = iter.get_node();
-			new_node->set_next(s_node);
-			new_node->set_prev(f_node);
-			f_node->set_next(new_node);
-			s_node->set_prev(new_node);
+			Node* newNode = new Node(elem);
+			Node* fNode = iter.getNode()->getPrev();
+			Node* sNode = iter.getNode();
+			newNode->setNext(sNode);
+			newNode->setPrev(fNode);
+			fNode->setNext(newNode);
+			sNode->setPrev(newNode);
 			len++;
 		}
 	}
 
 	void destroy() noexcept
 	{
-		Node* current_nod = beg_nod;
-		while (current_nod != nullptr)
+		Node* currentNod = begNod;
+		while (currentNod != nullptr)
 		{
-			Node* tmp = current_nod;
-			current_nod = current_nod->get_next();
+			Node* tmp = currentNod;
+			currentNod = currentNod->getNext();
 			delete tmp;
 		}
-		beg_nod = nullptr;
-		end_nod = nullptr;
+		begNod = nullptr;
+		endNod = nullptr;
 		len = 0;
 	}
 
-	void remove_first() noexcept
+	void removeFirst() noexcept
 	{
 		if (len == 1)
 		{
@@ -214,14 +214,14 @@ public:
 		}
 		else
 		{
-			Node* successor = get_node(1);
-			successor->set_prev(nullptr);
-			beg_nod = successor;
+			Node* successor = getNode(1);
+			successor->setPrev(nullptr);
+			begNod = successor;
 			len--;
 		}
 	}
 
-	void remove_last() noexcept
+	void removeLast() noexcept
 	{
 		if (len == 1)
 		{
@@ -229,9 +229,9 @@ public:
 		}
 		else
 		{
-			Node* successor = get_node(len - 2);
-			successor->set_next(nullptr);
-			end_nod = successor;
+			Node* successor = getNode(len - 2);
+			successor->setNext(nullptr);
+			endNod = successor;
 			len--;
 		}
 	}
@@ -244,16 +244,16 @@ public:
 		}
 		else
 		{
-			Node* f_node = iter.get_node()->get_prev();
-			Node* s_node = iter.get_node()->get_next();
-			if (f_node != nullptr)
-				f_node->set_next(s_node);
+			Node* fNode = iter.getNode()->getPrev();
+			Node* sNode = iter.getNode()->getNext();
+			if (fNode != nullptr)
+				fNode->setNext(sNode);
 			else
-				beg_nod = s_node;
-			if (s_node != nullptr)
-				s_node->set_prev(f_node);
+				begNod = sNode;
+			if (sNode != nullptr)
+				sNode->setPrev(fNode);
 			else
-				end_nod = f_node;
+				endNod = fNode;
 			len--;
 		}
 	}
@@ -264,8 +264,8 @@ public:
 		{
 			if (len > 0)
 			{
-				Node* result = end_nod;
-				remove_last();
+				Node* result = endNod;
+				removeLast();
 				return result;
 			}
 			else
@@ -307,14 +307,14 @@ public:
 				direction = true;
 		}
 
-		Node* get_node() const noexcept
+		Node* getNode() const noexcept
 		{
 			return current;
 		}
 
 		T operator*() const
 		{
-			return current->get_val();
+			return current->getVal();
 		}
 
 		Iterator operator++(int) //postincrement
@@ -330,14 +330,14 @@ public:
 			{
 				if (direction == true)
 				{
-					Node* next = current->get_next();
+					Node* next = current->getNext();
 					if (current == nullptr)
 						throw std::range_error("Iterator pointing at the end of the list");
 					current = next;
 				}
 				else if (direction == false)
 				{
-					Node* next = current->get_prev();
+					Node* next = current->getPrev();
 					if (current == nullptr)
 						throw std::range_error("Iterator pointing at the end of the list");
 					current = next;
@@ -363,14 +363,14 @@ public:
 			{
 				if (direction == true)
 				{
-					Node* next = current->get_prev();
+					Node* next = current->getPrev();
 					if (current == nullptr)
 						throw std::range_error("");
 					current = next;
 				}
 				else if (direction == false)
 				{
-					Node* next = current->get_next();
+					Node* next = current->getNext();
 					if (current == nullptr)
 						throw std::range_error("Iterator pointing at the end of the list");
 					current = next;
@@ -412,13 +412,13 @@ public:
 
 	Iterator begin() const
 	{
-		Iterator iter(beg_nod);
+		Iterator iter(begNod);
 		return iter;
 	};
 
 	Iterator end() const
 	{
-		Iterator iter(end_nod);
+		Iterator iter(endNod);
 		return iter;
 	}
 

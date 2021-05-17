@@ -8,6 +8,6 @@ int main()
 	Contract cont("trala", 2445);
 	Contract cont2("lala2", 2445);
 	Person janusz("Jan", "Szczygiel", 76);
-	janusz.add_contr(cont);
-	janusz.del_contr(cont2);
+	janusz.addContr(cont);
+	janusz.delContr(cont2);
 }

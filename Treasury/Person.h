@@ -11,13 +11,13 @@ private:
 	std::string name;
 	std::string surname;
 	int age;
-	int all_payments = 0;
-	int all_incomes_settled = 0;
+	int allPayments = 0;
+	int allIncomesSettled = 0;
 	TwoWayList<Contract> contracts;
-	void add_contract(Contract contr);
-	void del_contract(Contract contr);
+	void addContract(Contract contr);
+	void delContract(Contract contr);
 public:
-	void add_contr(Contract contr); // for testing
-	void del_contr(Contract contr); // for testing
+	void addContr(Contract contr); // for testing
+	void delContr(Contract contr); // for testing
 	Person(std::string nam, std::string surnam, int ag);
 };
