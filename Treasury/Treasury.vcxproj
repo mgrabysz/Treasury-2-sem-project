@@ -148,7 +148,7 @@
   <ItemGroup>
     <ClCompile Include="Calculator.cpp" />
     <ClCompile Include="Treasury.cpp" />
-    <ClCompile Include="Źródło.cpp" />
+    <ClCompile Include="Main.cpp" />
     <ClCompile Include="Person.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

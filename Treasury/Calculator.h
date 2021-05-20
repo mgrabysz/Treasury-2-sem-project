@@ -1,10 +1,12 @@
 #pragma once
-//
-//class Calculator
-//{
-//private:
-//	List<Payment*> payments;
-//public:
-//	void callAllPayments() noexcept;
-//};
-//
+#include "TwoWayList.h"
+#include "Person.h"
+
+class Calculator
+{
+	friend class Person;
+private:
+	TwoWayList<std::string> payments; //beda tu wskazania na obiekty typu Payment*
+public:
+	void callAllPayments(Person& person) noexcept;
+};
