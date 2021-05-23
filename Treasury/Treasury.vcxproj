@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClInclude Include="Calculator.h" />
     <ClInclude Include="Contract.h" />
+    <ClInclude Include="Payments.h" />
     <ClInclude Include="Person.h" />
     <ClInclude Include="TwoWayList.h" />
     <ClInclude Include="Treasury.h" />
