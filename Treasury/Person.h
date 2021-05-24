@@ -6,6 +6,8 @@
 
 class Person
 {
+
+	// friend Treasury
 private:
 	std::string name;
 	std::string surname;
@@ -26,9 +28,9 @@ public:
 		return surname;
 	}
 	
-	char getAge() const noexcept
+	int getAge() const noexcept
 	{
-		return age;
+		return static_cast<int> (age);
 	}
 
 	int getAllPayments() const noexcept

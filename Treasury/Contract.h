@@ -2,11 +2,17 @@
 
 #include <string>
 
+enum contrType {
+	praca,
+	zlecenie,
+	dzielo
+};
+
 struct Contract
 {
-	std::string type;
+	contrType type;
 	int value;
-	Contract(std::string typ, int val)
+	Contract(contrType typ, int val)
 		:type(typ), value(val)
 	{
 
@@ -16,3 +22,6 @@ struct Contract
 		return (type == contr.type && value == contr.value);
 	}
 };
+
+
+

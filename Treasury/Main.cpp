@@ -11,4 +11,7 @@ int main()
 	janusz.addContr(cont);
 	janusz.delContr(cont2);
 	*/
+
+
+
 }
