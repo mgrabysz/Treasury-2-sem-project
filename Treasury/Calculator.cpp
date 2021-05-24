@@ -2,8 +2,18 @@
 
 void Calculator::callAllPayments(Person& person) noexcept
 {
-	for (auto i = payments.begin(); i != payments.end(); ++i)
+	
+	for (auto j = person.getContracts().begin(); j != person.getContracts().end(); ++j)
 	{
-		(*i); //powinno byc .funkcjaKtoraLiczyDanaSkladke chyba .calculate(person)
+		for (auto i = payments.begin(); i != payments.end(); ++i)
+		{
+			Contract con = *j;
+			(*i)->calculate(person, con);
+		}
 	}
+}
+
+void Calculator::addPayment(Payment&  newPay) noexcept 
+{
+//payments.append(newPay);
 }

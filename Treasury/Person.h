@@ -3,7 +3,6 @@
 #include <string.h>
 #include "Contract.h"
 #include "TwoWayList.h"
-#include "Calculator.h"
 
 class Person
 {
