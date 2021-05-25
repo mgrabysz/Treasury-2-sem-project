@@ -26,6 +26,7 @@ private:
 		{
 			prevNode = prev;
 		}
+	
 	public:
 		Node(T val) noexcept
 			:value(val)
@@ -179,7 +180,7 @@ public:
 		{
 			append(elem);
 		}
-		else
+		else if (iter != nullptr)
 		{
 			Node* newNode = new Node(elem);
 			Node* fNode = iter.getNode()->getPrev();

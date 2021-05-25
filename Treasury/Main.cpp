@@ -12,6 +12,8 @@ int main()
 	janusz.delContr(cont2);
 	*/
 
-
-
+	int a = 3;
+	double b = 2.5;
+	int c = a * b;
+	std::cout << c;
 }
