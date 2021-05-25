@@ -82,9 +82,19 @@ void Person::setAllPayments(int number)
 	allPayments = number;
 }
 
+void Person::incrementAllPayments(int number)
+{
+	allPayments += number;
+}
+
 void Person::setAllIncomesSettled(int number)
 {
 	allIncomesSettled = number;
+}
+
+void Person::incrementAllIncomesSettled(int number)
+{
+	allIncomesSettled += number;
 }
 
 void Person::setContracts(TwoWayList<Contract> contr)

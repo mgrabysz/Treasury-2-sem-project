@@ -29,7 +29,9 @@ public:
 	void setSurname(std::string surnam);
 	void setAge(char ag);
 	void setAllPayments(int number);
+	void incrementAllPayments(int number);
 	void setAllIncomesSettled(int number);
+	void incrementAllIncomesSettled(int number);
 	void setContracts(TwoWayList<Contract> contr);
 
 	void addContr(Contract contr); // for testing
