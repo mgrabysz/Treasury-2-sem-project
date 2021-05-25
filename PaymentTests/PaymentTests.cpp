@@ -225,5 +225,142 @@ namespace PaymentTests
 			Assert::AreEqual(11678900, scott.getAllIncomesSettled());
 			Assert::AreEqual(123400, scott.getAllPayments());
 		}
+
+		TEST_METHOD(IllnessEmployment)
+		{
+			Person scott("Michael", "Scott", 45);
+			scott.setAllPayments(25600);
+			scott.setAllIncomesSettled(760000);
+
+			Contract contract(praca, 800000);
+			Illness illnessCalc;
+
+			int payment = illnessCalc.calculate(scott, contract);
+
+			Assert::AreEqual(19600, payment);
+			Assert::AreEqual(1560000, scott.getAllIncomesSettled());
+			Assert::AreEqual(45200, scott.getAllPayments());
+		}
+		TEST_METHOD(IllnessCivil)
+		{
+			Person scott("Michael", "Scott", 45);
+			scott.setAllPayments(25600);
+			scott.setAllIncomesSettled(760000);
+
+			Contract contract(zlecenie, 800000);
+			Illness illnessCalc;
+
+			int payment = illnessCalc.calculate(scott, contract);
+
+			Assert::AreEqual(0, payment);
+			Assert::AreEqual(1560000, scott.getAllIncomesSettled());
+			Assert::AreEqual(25600, scott.getAllPayments());
+		}
+		TEST_METHOD(IllnessComission)
+		{
+			Person scott("Michael", "Scott", 45);
+			scott.setAllPayments(25600);
+			scott.setAllIncomesSettled(760000);
+
+			Contract contract(dzielo, 800000);
+			Illness illnessCalc;
+
+			int payment = illnessCalc.calculate(scott, contract);
+
+			Assert::AreEqual(0, payment);
+			Assert::AreEqual(1560000, scott.getAllIncomesSettled());
+			Assert::AreEqual(25600, scott.getAllPayments());
+		}
+
+		TEST_METHOD(TaxBelowTreshold)
+		{
+			Tax taxCalculator;
+
+			int tax = taxCalculator.taxWithTreshold(7552800);
+			Assert::AreEqual(1283976, tax);
+		}
+		TEST_METHOD(TaxOverTreshold)
+		{
+			Tax taxCalculator;
+
+			int tax = taxCalculator.taxWithTreshold(9552800);
+			Assert::AreEqual(1773976, tax);
+		}
+
+		TEST_METHOD(TaxEmploymentOverAge)
+		{
+			Person scott("Michael", "Scott", 45);
+			scott.setAllPayments(25600);
+			scott.setAllIncomesSettled(760000);
+
+			Contract contract(praca, 10000000);
+			Tax taxCalculator;
+
+			int payment = taxCalculator.calculate(scott, contract);
+
+			Assert::AreEqual(1917080, payment);
+			Assert::AreEqual(10760000, scott.getAllIncomesSettled());
+			Assert::AreEqual(1942680, scott.getAllPayments());
+		}
+		TEST_METHOD(TaxEmploymentUnderAge)
+		{
+			Person scott("Michael", "Scott", 22);
+			scott.setAllPayments(25600);
+			scott.setAllIncomesSettled(760000);
+
+			Contract contract(praca, 10000000);
+			Tax taxCalculator;
+
+			int payment = taxCalculator.calculate(scott, contract);
+
+			Assert::AreEqual(463104, payment);
+			Assert::AreEqual(10760000, scott.getAllIncomesSettled());
+			Assert::AreEqual(488704, scott.getAllPayments());
+		}
+		TEST_METHOD(TaxCivilOverAge)
+		{
+			Person scott("Michael", "Scott", 45);
+			scott.setAllPayments(25600);
+			scott.setAllIncomesSettled(760000);
+
+			Contract contract(zlecenie, 1000000);
+			Tax taxCalculator;
+
+			int payment = taxCalculator.calculate(scott, contract);
+
+			Assert::AreEqual(170000, payment);
+			Assert::AreEqual(1760000, scott.getAllIncomesSettled());
+			Assert::AreEqual(195600, scott.getAllPayments());
+		}
+		TEST_METHOD(TaxCivilUnderAge)
+		{
+			Person scott("Michael", "Scott", 20);
+			scott.setAllPayments(25600);
+			scott.setAllIncomesSettled(760000);
+
+			Contract contract(praca, 1000000);
+			Tax taxCalculator;
+
+			int payment = taxCalculator.calculate(scott, contract);
+
+			Assert::AreEqual(0, payment);
+			Assert::AreEqual(1760000, scott.getAllIncomesSettled());
+			Assert::AreEqual(25600, scott.getAllPayments());
+		}
+		TEST_METHOD(TaxComission)
+		{
+			Person scott("Michael", "Scott", 18);
+			scott.setAllPayments(25600);
+			scott.setAllIncomesSettled(760000);
+
+			Contract contract(dzielo, 10000000);
+			Tax taxCalculator;
+
+			int payment = taxCalculator.calculate(scott, contract);
+
+			Assert::AreEqual(1917080, payment);
+			Assert::AreEqual(10760000, scott.getAllIncomesSettled());
+			Assert::AreEqual(1942680, scott.getAllPayments());
+		}
 	};
 }

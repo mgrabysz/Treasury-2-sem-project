@@ -34,17 +34,17 @@ public:
 	virtual int calculate(Person& person, Contract& contract);
 };
 
-/*
-class Tax :public Payment
-	// income tax (pol.: podatek dochodowy)
-{
-public:
-	virtual int calculate(Person& person, Contract& contract);
-};
 class Illness :public Payment
 	// Another health insurance (pol.: sk³adka chorobowa, nawet nie wiem jak to przet³umaczyæ)
 {
 public:
 	virtual int calculate(Person& person, Contract& contract);
 };
-*/
+
+class Tax :public Payment
+	// income tax (pol.: podatek dochodowy)
+{
+public:
+	virtual int calculate(Person& person, Contract& contract);
+	int taxWithTreshold(int const earnings);
+};
