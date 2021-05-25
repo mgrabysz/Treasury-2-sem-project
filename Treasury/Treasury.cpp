@@ -19,11 +19,34 @@ void Treasury::deletePerson(int id) noexcept
 	//mozna dac wyjatek ze nie ma osoby o takim id
 }
 
-void Treasury::editPerson(int id, bool del) noexcept
+void Treasury::editPerson(int id, int contrId) noexcept
 {
-	//narazie nwm jak podac kontrakt do usuniecia lub dodania bo skad uzytkownik ma wiedziec ktory kontrakt chce usunac,
-	//moze pokazac mu liste kontraktow i zeby wybral sobie id
-	//wtedy trzeba zmienic klase Person
+	//usuwa n-ty z kolei kontrakt z listu kontraktów n-tej osoby
+	for (auto i = people.begin(); i != people.end(); ++i)
+	{
+		id--;
+		if (id == 0)
+		{
+			for (auto j = (*i)->getContracts().begin(); j != (*i)->getContracts().end(); ++j)
+			{
+				contrId--;
+				if (contrId == 0)
+					(*i)->delContr(j);
+			}
+		}
+	}
+}
+
+void Treasury::editPerson(int id, Contract newContr) noexcept
+{
+	//dodaje nowy kontrakt do n-tej osoby
+	for (auto i = people.begin(); i != people.end(); ++i)
+	{
+		id--;
+		if (id == 0)
+			(*i)->addContr(newContr);
+	}
+	
 }
 
 void Treasury::showPeople() const noexcept
@@ -41,10 +64,19 @@ void Treasury::showPeople() const noexcept
 
 std::string Treasury::generateInfoPerson(Person* person) const noexcept
 {
-	return "";
+	std::string strToReturn = "Name: " + person->getName() + "\tSurname: " + person->getSurname();
+	strToReturn = strToReturn + "\tAge: " + std::to_string(person->getAge()) + "\tAll Payments: " + std::to_string(person->getAllPayments());
+	return strToReturn;
 }
 
 std::string Treasury::generateListPayment() const noexcept
 {
-	return "";
+	std::string strToReturn = "";
+	for (auto i = people.begin(); i != people.end(); ++i)
+	{
+		Person* ptr = (*i);
+		strToReturn += generateInfoPerson(ptr);
+		strToReturn += "\n";
+	}
+	return strToReturn;
 }
