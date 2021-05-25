@@ -68,9 +68,19 @@ public:
 		allPayments = number;
 	}
 
+	void incrementAllPayments(int number)
+	{
+		allPayments += number;
+	}
+
 	void setAllIncomesSettled(int number)
 	{
 		allIncomesSettled = number;
+	}
+
+	void incrementAllIncomesSettled(int number)
+	{
+		allIncomesSettled += number;
 	}
 
 	void setContracts(TwoWayList<Contract> contr)

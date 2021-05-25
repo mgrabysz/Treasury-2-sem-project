@@ -17,9 +17,10 @@ class Retirement :public Payment
 	// pension contribution (pol.: sk³adka emerytalna)
 {
 public:
+	Retirement() = default;
 	virtual int calculate(Person& person, Contract& contract);
 };
-
+/*
 class Pension :public Payment
 	// disablement pension (pol.: sk³adka rentowa)
 {
@@ -47,3 +48,4 @@ class Illness :public Payment
 public:
 	virtual int calculate(Person& person, Contract& contract);
 };
+*/

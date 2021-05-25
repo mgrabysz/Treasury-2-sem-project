@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31105.61
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Treasury", "Treasury\Treasury.vcxproj", "{25BFD4F7-5057-45D9-BED3-4785CF0F488A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PaymentTests", "PaymentTests\PaymentTests.vcxproj", "{BB5E1E3F-B3DD-49D7-8351-A1E778611D85}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{25BFD4F7-5057-45D9-BED3-4785CF0F488A}.Release|x64.Build.0 = Release|x64
 		{25BFD4F7-5057-45D9-BED3-4785CF0F488A}.Release|x86.ActiveCfg = Release|Win32
 		{25BFD4F7-5057-45D9-BED3-4785CF0F488A}.Release|x86.Build.0 = Release|Win32
+		{BB5E1E3F-B3DD-49D7-8351-A1E778611D85}.Debug|x64.ActiveCfg = Debug|x64
+		{BB5E1E3F-B3DD-49D7-8351-A1E778611D85}.Debug|x64.Build.0 = Debug|x64
+		{BB5E1E3F-B3DD-49D7-8351-A1E778611D85}.Debug|x86.ActiveCfg = Debug|Win32
+		{BB5E1E3F-B3DD-49D7-8351-A1E778611D85}.Debug|x86.Build.0 = Debug|Win32
+		{BB5E1E3F-B3DD-49D7-8351-A1E778611D85}.Release|x64.ActiveCfg = Release|x64
+		{BB5E1E3F-B3DD-49D7-8351-A1E778611D85}.Release|x64.Build.0 = Release|x64
+		{BB5E1E3F-B3DD-49D7-8351-A1E778611D85}.Release|x86.ActiveCfg = Release|Win32
+		{BB5E1E3F-B3DD-49D7-8351-A1E778611D85}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
