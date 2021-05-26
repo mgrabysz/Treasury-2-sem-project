@@ -6,14 +6,10 @@
 //
 //int main()
 //{
-//	/*Contract cont("trala", 2445);
-//	Contract cont2("lala2", 2445);
-//	Person janusz("Jan", "Szczygiel", 76);
-//	janusz.addContr(cont);
-//	janusz.delContr(cont2);
-//	*/
-//
-//	std::cout << "Essa";
-//	Person janusz("Jan", "Szczygiel", 76);
-//	Retirement retirementCalc;
+//	TwoWayList<int> dupa = { };
+//	TwoWayList<int>::Iterator iter = dupa.begin();
+//	for (TwoWayList<int>::Iterator iter = dupa.begin(); iter != nullptr; iter++)
+//	{
+//		std::cout << *iter;
+//	}
 //}
