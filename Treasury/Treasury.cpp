@@ -49,17 +49,17 @@ void Treasury::editPerson(int id, Contract newContr) noexcept
 	
 }
 
-void Treasury::showPeople() const noexcept
+std::string Treasury::showPeople() const noexcept
 {
 	//wyswietlac w konsoli ludzi z ich id
 	std::string strToShow = "";
 	int id = 0;
-	for (auto i = people.begin(); i != people.end(); ++i)
-	{
-		strToShow = strToShow + std::to_string(id) + ".\t" + "\n";
+	for (auto i = people.begin(); i != nullptr; ++i)
+	{	
 		id++;
+		strToShow = strToShow + std::to_string(id) + ". " + (*i)->getName() + " " + (*i)->getSurname() + "\n";
 	}
-	std::cout << strToShow;
+	return strToShow;
 }
 
 std::string Treasury::generateInfoPerson(Person* person) const noexcept
@@ -72,7 +72,7 @@ std::string Treasury::generateInfoPerson(Person* person) const noexcept
 std::string Treasury::generateListPayment() const noexcept
 {
 	std::string strToReturn = "";
-	for (auto i = people.begin(); i != people.end(); ++i)
+	for (auto i = people.begin(); i != nullptr; ++i)
 	{
 		Person* ptr = (*i);
 		strToReturn += generateInfoPerson(ptr);

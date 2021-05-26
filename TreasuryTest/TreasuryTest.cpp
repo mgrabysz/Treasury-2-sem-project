@@ -9,8 +9,12 @@ namespace TreasuryTest
 	{
 	public:
 		
-		TEST_METHOD(TestMethod1)
+		TEST_METHOD(TreasuryAddPerson)
 		{
+			Treasury treasury;
+			treasury.addPerson(new Person("Lukasz", "Kuli", 20));
+			std::string exp = "1. Lukasz Kuli\n";
+			Assert::AreEqual(exp, treasury.showPeople());
 		}
 	};
 }

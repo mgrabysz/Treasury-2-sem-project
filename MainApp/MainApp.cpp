@@ -12,6 +12,7 @@ int main()
     treasury.addPerson(ptr);
     treasury.editPerson(1, biedaKontrakt);
     std::cout << treasury.generateListPayment();
+    std::cout << treasury.showPeople();
     return 0;
 }
 

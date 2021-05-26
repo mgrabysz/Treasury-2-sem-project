@@ -14,7 +14,7 @@ public:
 	void deletePerson(int id) noexcept;
 	void editPerson(int id, int contrId) noexcept;
 	void editPerson(int id, Contract newContr) noexcept;
-	void showPeople() const noexcept;
+	std::string showPeople() const noexcept;
 	std::string generateInfoPerson(Person* person) const noexcept;
 	std::string generateListPayment() const noexcept;
 };
