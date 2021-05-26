@@ -6,8 +6,7 @@
 
 class Person
 {
-
-	// friend Treasury
+	friend Treasury;
 private:
 	std::string name;
 	std::string surname;
