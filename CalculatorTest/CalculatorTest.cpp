@@ -1,4 +1,4 @@
-#include "pch.h"
+#include "../Treasury/Calculator.h"
 #include "CppUnitTest.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
