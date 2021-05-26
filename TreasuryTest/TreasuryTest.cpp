@@ -1,5 +1,5 @@
-#include "pch.h"
 #include "CppUnitTest.h"
+#include "../Treasury/Treasury.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
