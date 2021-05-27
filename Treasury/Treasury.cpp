@@ -51,7 +51,6 @@ void Treasury::editPerson(int id, Contract newContr) noexcept
 
 std::string Treasury::showPeople() const noexcept
 {
-	//wyswietlac w konsoli ludzi z ich id
 	std::string strToShow = "";
 	int id = 0;
 	for (auto i = people.begin(); i != nullptr; ++i)
@@ -65,7 +64,7 @@ std::string Treasury::showPeople() const noexcept
 std::string Treasury::generateInfoPerson(Person* person) const noexcept
 {
 	std::string strToReturn = "Name: " + person->getName() + "\tSurname: " + person->getSurname();
-	strToReturn = strToReturn + "\tAge: " + std::to_string(person->getAge()) + "\tAll Payments: " + std::to_string(person->getAllPayments());
+	strToReturn = strToReturn + "\tAge: " + std::to_string(person->getAge()) + " \tAll Payments: " + std::to_string(person->getAllPayments());
 	return strToReturn;
 }
 
