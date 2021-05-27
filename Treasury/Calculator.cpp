@@ -1,9 +1,14 @@
 #include "Calculator.h"
 
-void Calculator::callAllPayments(Person& person) noexcept
+Calculator::Calculator() noexcept
 {
 	
-	for (auto j = person.getContracts().begin(); j != person.getContracts().end(); ++j)
+}
+
+void Calculator::callAllPayments(Person* person) noexcept
+{
+	
+	for (auto j = person->getContracts().begin(); j != person->getContracts().end(); ++j)
 	{
 		for (auto i = payments.begin(); i != payments.end(); ++i)
 		{

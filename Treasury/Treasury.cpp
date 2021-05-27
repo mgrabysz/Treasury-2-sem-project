@@ -61,14 +61,16 @@ std::string Treasury::showPeople() const noexcept
 	return strToShow;
 }
 
-std::string Treasury::generateInfoPerson(Person* person) const noexcept
+std::string Treasury::generateInfoPerson(Person* person) noexcept
 {
+	resetPerson(person);
+	calculator.callAllPayments(person);
 	std::string strToReturn = "Name: " + person->getName() + "\tSurname: " + person->getSurname();
 	strToReturn = strToReturn + "\tAge: " + std::to_string(person->getAge()) + " \tAll Payments: " + std::to_string(person->getAllPayments());
 	return strToReturn;
 }
 
-std::string Treasury::generateListPayment() const noexcept
+std::string Treasury::generateListPayment() noexcept
 {
 	std::string strToReturn = "";
 	for (auto i = people.begin(); i != nullptr; ++i)
@@ -79,3 +81,4 @@ std::string Treasury::generateListPayment() const noexcept
 	}
 	return strToReturn;
 }
+
