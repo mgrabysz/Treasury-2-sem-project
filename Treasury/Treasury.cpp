@@ -37,7 +37,7 @@ void Treasury::editPerson(int id, int contrId)
 				contrId--;
 				if (contrId == 0)
 				{ 
-					(*i)->delContr(j);
+					(*i)->delContract(j);
 					return;
 				}	
 			}
@@ -55,7 +55,7 @@ void Treasury::editPerson(int id, Contract newContr)
 		id--;
 		if (id == 0)
 		{
-			(*i)->addContr(newContr);
+			(*i)->addContract(newContr);
 			return;
 		}
 	}
