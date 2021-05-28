@@ -9,6 +9,7 @@ class Calculator
 private:
 	TwoWayList<Payment*> payments;
 public:
+	Calculator() noexcept;
 	void addPayment(Payment* newPay) noexcept;
-	void callAllPayments(Person& person) noexcept;
+	void callAllPayments(Person* person) noexcept;
 };

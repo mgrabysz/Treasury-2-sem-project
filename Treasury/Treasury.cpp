@@ -19,32 +19,104 @@ void Treasury::deletePerson(int id) noexcept
 	//mozna dac wyjatek ze nie ma osoby o takim id
 }
 
-void Treasury::editPerson(int id, bool del) noexcept
+void Treasury::editPerson(int id, int contrId) noexcept
 {
-	//narazie nwm jak podac kontrakt do usuniecia lub dodania bo skad uzytkownik ma wiedziec ktory kontrakt chce usunac,
-	//moze pokazac mu liste kontraktow i zeby wybral sobie id
-	//wtedy trzeba zmienic klase Person
-}
-
-void Treasury::showPeople() const noexcept
-{
-	//wyswietlac w konsoli ludzi z ich id
-	std::string strToShow = "";
-	int id = 0;
+	//usuwa n-ty z kolei kontrakt z listu kontraktów n-tej osoby
 	for (auto i = people.begin(); i != people.end(); ++i)
 	{
-		strToShow = strToShow + std::to_string(id) + ".\t" + "\n";
-		id++;
+		id--;
+		if (id == 0)
+		{
+			for (auto j = (*i)->getContracts().begin(); j != (*i)->getContracts().end(); ++j)
+			{
+				contrId--;
+				if (contrId == 0)
+					(*i)->delContr(j);
+			}
+		}
 	}
-	std::cout << strToShow;
 }
 
-std::string Treasury::generateInfoPerson(Person* person) const noexcept
+void Treasury::editPerson(int id, Contract newContr) noexcept
 {
-	return "";
+	//dodaje nowy kontrakt do n-tej osoby
+	for (auto i = people.begin(); i != people.end(); ++i)
+	{
+		id--;
+		if (id == 0)
+			(*i)->addContr(newContr);
+	}
+	
 }
 
-std::string Treasury::generateListPayment() const noexcept
+void Treasury::resetPerson(Person* person) noexcept
 {
-	return "";
+	person->setAllIncomesSettled(0);
+	person->setAllPayments(0);
 }
+
+TwoWayList<Info> Treasury::showPeople() const noexcept
+{
+	TwoWayList<Info> data;
+	int id = 0;
+	for (auto i = people.begin(); i != nullptr; ++i)
+	{
+		id++;
+		Info inf;
+		inf.id = id;
+		inf.name = (*i)->getName();
+		inf.surname = (*i)->getSurname();
+		inf.age = (*i)->getAge();
+		data.append(inf);
+	}
+	return data;
+}
+
+Info Treasury::generateInfoPerson(Person* person) noexcept
+{
+	resetPerson(person);
+	calculator.callAllPayments(person);
+	Info data;
+	data.name = person->getName();
+	data.surname = person->getSurname();
+	data.age = person->getAge();
+	data.allPayments = person->getAllPayments();
+	return data;
+	/*std::string strToReturn = "Name: " + person->getName() + "\tSurname: " + person->getSurname();
+	strToReturn = strToReturn + "\tAge: " + std::to_string(person->getAge()) + " \tAll Payments: " + std::to_string(person->getAllPayments());
+	return strToReturn; */
+}
+
+Info Treasury::generateInfoPerson(int id)
+{
+	int newId = 0;
+	for (auto i = people.begin(); i != nullptr; ++i)
+	{
+		newId++;
+		if (newId == id)
+		{
+			return generateInfoPerson((*i));
+		}
+	}
+	throw std::invalid_argument("There is no person with that id");
+}
+
+TwoWayList<Info> Treasury::generateListPayment() noexcept
+{
+	TwoWayList<Info> data;
+	int id = 0;
+	for (auto i = people.begin(); i != nullptr; ++i)
+	{
+		data.append(generateInfoPerson((*i)));
+	}
+	return data;
+	/*std::string strToReturn = "";
+	for (auto i = people.begin(); i != nullptr; ++i)
+	{
+		Person* ptr = (*i);
+		strToReturn += generateInfoPerson(ptr);
+		strToReturn += "\n";
+	}
+	return strToReturn; */
+}
+

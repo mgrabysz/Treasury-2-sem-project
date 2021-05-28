@@ -110,7 +110,7 @@ public:
 		}
 		catch (std::invalid_argument& e)
 		{
-			throw std::invalid_argument("");		//jak inaczej
+			throw std::invalid_argument("");
 			std::cerr << "Index out of range (get_node)" << std::endl;
 			return 0;
 		}
