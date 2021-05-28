@@ -152,7 +152,6 @@
     <ClCompile Include="ConsoleInterface.cpp" />
     <ClCompile Include="Payments.cpp" />
     <ClCompile Include="Treasury.cpp" />
-    <ClCompile Include="Main.cpp" />
     <ClCompile Include="Person.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
