@@ -21,9 +21,9 @@ private:
 public:
 	Treasury() = default;
 	void addPerson(Person* person) noexcept;
-	void deletePerson(int id) noexcept;
-	void editPerson(int id, int contrId) noexcept;
-	void editPerson(int id, Contract newContr) noexcept;
+	void deletePerson(int id);
+	void editPerson(int id, int contrId);
+	void editPerson(int id, Contract newContr);
 	void getDataFromJson(std::string path);
 	TwoWayList<Info> showPeople() const noexcept;
 	Info generateInfoPerson(Person* person) noexcept;
