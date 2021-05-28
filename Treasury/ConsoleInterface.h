@@ -1,6 +1,7 @@
 #pragma once
 #include "Treasury.h"
 #include <iostream>
+#include <fstream>
 
 class ConsoleInterface
 {

@@ -38,9 +38,22 @@ void ConsoleInterface::showGeneratedInfoPerson()
 void ConsoleInterface::showGeneratedListPayments()
 {
 	TwoWayList<Info> data = treasury.generateListPayment();
+	std::cout << "Payments Raport\n==============================\n";
+	for (auto i = data.begin(); i != nullptr; ++i)
+	{
+		std::cout << (*i).id << ". " << (*i).name << " " << (*i).surname << " Age: " << (*i).age << " All payments: "<<(*i).allPayments << "\n";
+	}
 }
 
 void ConsoleInterface::exportListPaymentsToTxt()
 {
-
+	TwoWayList<Info> data = treasury.generateListPayment();
+	std::ofstream myfile;
+	myfile.open("raport.txt");
+	for (auto i = data.begin(); i != nullptr; ++i)
+	{
+		myfile << (*i).id << ". " << (*i).name << " " << (*i).surname << " Age: " << (*i).age << " All payments: " << (*i).allPayments << "\n";
+	}
+	myfile.close();
+	std::cout << "Raport generated to raport.txt file.";
 }
