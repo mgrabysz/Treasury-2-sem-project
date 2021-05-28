@@ -57,3 +57,18 @@ void ConsoleInterface::exportListPaymentsToTxt()
 	myfile.close();
 	std::cout << "Raport generated to raport.txt file.";
 }
+
+void ConsoleInterface::addNewPerson() noexcept
+{
+
+}
+
+void ConsoleInterface::deletePerson()
+{
+
+}
+
+void ConsoleInterface::editPerson()
+{
+
+}
