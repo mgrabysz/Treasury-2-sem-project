@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Calculator.h" />
+    <ClInclude Include="ConsoleInterface.h" />
     <ClInclude Include="Contract.h" />
     <ClInclude Include="Payments.h" />
     <ClInclude Include="Person.h" />
@@ -148,6 +149,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Calculator.cpp" />
+    <ClCompile Include="ConsoleInterface.cpp" />
     <ClCompile Include="Payments.cpp" />
     <ClCompile Include="Treasury.cpp" />
     <ClCompile Include="Main.cpp" />
