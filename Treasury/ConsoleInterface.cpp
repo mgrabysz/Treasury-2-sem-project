@@ -60,7 +60,7 @@ void ConsoleInterface::exportListPaymentsToTxt()
 
 void ConsoleInterface::addNewPerson() noexcept
 {
-
+	//praca -> zlecenie -> dzielo
 }
 
 void ConsoleInterface::deletePerson()
