@@ -3,16 +3,12 @@
 void Person::addContract(Contract contr)
 {
 	allPayments += contr.value;
-	contracts.append(contr);
+	contracts.push(contr);
 }
 
 void Person::delContract(TwoWayList<Contract>::Iterator iter)
 {
-	if (iter != nullptr)
-	{
-		contracts.remove(iter);
-	}
-	
+	contracts.del(iter);
 }
 
 void Person::addContr(Contract contr)

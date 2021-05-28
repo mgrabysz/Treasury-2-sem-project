@@ -25,7 +25,7 @@ public:
 	void editPerson(int id, int contrId);
 	void editPerson(int id, Contract newContr);
 	void getDataFromJson(std::string path);
-	TwoWayList<Info> showPeople() const noexcept;
+	TwoWayList<Info> showPeople() noexcept;
 	Info generateInfoPerson(Person* person) noexcept;
 	Info generateInfoPerson(int id);
 	TwoWayList<Info> generateListPayment() noexcept;

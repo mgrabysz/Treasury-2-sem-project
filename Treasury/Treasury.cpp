@@ -2,7 +2,7 @@
 
 void Treasury::addPerson(Person* person) noexcept
 {
-	people.append(person);
+	people.push(person);
 }
 
 void Treasury::deletePerson(int id)
@@ -12,7 +12,7 @@ void Treasury::deletePerson(int id)
 		id--;
 		if (id == 0)
 		{
-			people.remove(i);
+			people.del(i);
 			return;
 		}		
 	}
@@ -63,11 +63,11 @@ void Treasury::resetPerson(Person* person) noexcept
 	person->setAllPayments(0);
 }
 
-TwoWayList<Info> Treasury::showPeople() const noexcept
+TwoWayList<Info> Treasury::showPeople() noexcept
 {
 	TwoWayList<Info> data;
 	int id = 0;
-	for (auto i = people.begin(); i != nullptr; ++i)
+	for (auto i = people.begin(); i != people.end(); ++i)
 	{
 		id++;
 		Info inf;
@@ -75,7 +75,7 @@ TwoWayList<Info> Treasury::showPeople() const noexcept
 		inf.name = (*i)->getName();
 		inf.surname = (*i)->getSurname();
 		inf.age = (*i)->getAge();
-		data.append(inf);
+		data.push(inf);
 	}
 	return data;
 }
@@ -95,7 +95,7 @@ Info Treasury::generateInfoPerson(Person* person) noexcept
 Info Treasury::generateInfoPerson(int id)
 {
 	int newId = 0;
-	for (auto i = people.begin(); i != nullptr; ++i)
+	for (auto i = people.begin(); i != people.end(); ++i)
 	{
 		newId++;
 		if (newId == id)
@@ -110,9 +110,9 @@ TwoWayList<Info> Treasury::generateListPayment() noexcept
 {
 	TwoWayList<Info> data;
 	int id = 0;
-	for (auto i = people.begin(); i != nullptr; ++i)
+	for (auto i = people.begin(); i != people.end(); ++i)
 	{
-		data.append(generateInfoPerson((*i)));
+		data.push(generateInfoPerson((*i)));
 	}
 	return data;
 }

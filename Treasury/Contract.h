@@ -12,6 +12,7 @@ struct Contract
 {
 	contrType type;
 	int value;
+	Contract() = default;
 	Contract(contrType typ, int val)
 		:type(typ), value(val)
 	{

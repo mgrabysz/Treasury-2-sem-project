@@ -4,7 +4,7 @@ void ConsoleInterface::showPeopleList() noexcept
 {
 	std::cout << "List of People\n==============================\n";
 	TwoWayList<Info> data = treasury.showPeople();
-	for (auto i = data.begin(); i != nullptr; ++i)
+	for (auto i = data.begin(); i != data.end(); ++i)
 	{
 		std::cout << (*i).id << ". " << (*i).name << " " << (*i).surname << " " << (*i).age << "\n";
 	}
@@ -39,7 +39,7 @@ void ConsoleInterface::showGeneratedListPayments()
 {
 	TwoWayList<Info> data = treasury.generateListPayment();
 	std::cout << "Payments Raport\n==============================\n";
-	for (auto i = data.begin(); i != nullptr; ++i)
+	for (auto i = data.begin(); i != data.end(); ++i)
 	{
 		std::cout << (*i).id << ". " << (*i).name << " " << (*i).surname << " Age: " << (*i).age << " All payments: "<<(*i).allPayments << "\n";
 	}
@@ -50,7 +50,7 @@ void ConsoleInterface::exportListPaymentsToTxt()
 	TwoWayList<Info> data = treasury.generateListPayment();
 	std::ofstream myfile;
 	myfile.open("raport.txt");
-	for (auto i = data.begin(); i != nullptr; ++i)
+	for (auto i = data.begin(); i != data.end(); ++i)
 	{
 		myfile << (*i).id << ". " << (*i).name << " " << (*i).surname << " Age: " << (*i).age << " All payments: " << (*i).allPayments << "\n";
 	}
