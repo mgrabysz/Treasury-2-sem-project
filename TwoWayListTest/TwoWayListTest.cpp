@@ -8,6 +8,8 @@ namespace UnitTest1
 	TEST_CLASS(TwoWayListUnitTest)
 	{
 	public:
+		// Testy Bartka do starej listy
+		/*
 		TEST_METHOD(twowaylist_create_empty)
 		{
 			TwoWayList<int> my_list;
@@ -192,6 +194,9 @@ namespace UnitTest1
 			Assert::IsTrue(*iter == 7);
 			Assert::IsTrue(*(++iter) == 6);
 		}
+		*/
+
+
 
 	};
 }
