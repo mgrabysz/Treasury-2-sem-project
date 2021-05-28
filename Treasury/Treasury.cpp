@@ -5,7 +5,7 @@ void Treasury::addPerson(Person* person) noexcept
 	people.append(person);
 }
 
-void Treasury::deletePerson(int id) noexcept
+void Treasury::deletePerson(int id)
 {
 	for (auto i = people.begin(); i != people.end(); ++i)
 	{
@@ -16,10 +16,10 @@ void Treasury::deletePerson(int id) noexcept
 			return;
 		}		
 	}
-	//mozna dac wyjatek ze nie ma osoby o takim id
+	throw std::invalid_argument("There is no person with that id");
 }
 
-void Treasury::editPerson(int id, int contrId) noexcept
+void Treasury::editPerson(int id, int contrId)
 {
 	//usuwa n-ty z kolei kontrakt z listu kontraktów n-tej osoby
 	for (auto i = people.begin(); i != people.end(); ++i)
@@ -31,22 +31,30 @@ void Treasury::editPerson(int id, int contrId) noexcept
 			{
 				contrId--;
 				if (contrId == 0)
+				{ 
 					(*i)->delContr(j);
+					return;
+				}	
 			}
+			throw std::invalid_argument("There is no contract with that id");
 		}
 	}
+	throw std::invalid_argument("There is no person with that id");
 }
 
-void Treasury::editPerson(int id, Contract newContr) noexcept
+void Treasury::editPerson(int id, Contract newContr)
 {
 	//dodaje nowy kontrakt do n-tej osoby
 	for (auto i = people.begin(); i != people.end(); ++i)
 	{
 		id--;
 		if (id == 0)
+		{
 			(*i)->addContr(newContr);
+			return;
+		}
 	}
-	
+	throw std::invalid_argument("There is no person with that id");
 }
 
 void Treasury::resetPerson(Person* person) noexcept
@@ -82,9 +90,6 @@ Info Treasury::generateInfoPerson(Person* person) noexcept
 	data.age = person->getAge();
 	data.allPayments = person->getAllPayments();
 	return data;
-	/*std::string strToReturn = "Name: " + person->getName() + "\tSurname: " + person->getSurname();
-	strToReturn = strToReturn + "\tAge: " + std::to_string(person->getAge()) + " \tAll Payments: " + std::to_string(person->getAllPayments());
-	return strToReturn; */
 }
 
 Info Treasury::generateInfoPerson(int id)
@@ -110,13 +115,5 @@ TwoWayList<Info> Treasury::generateListPayment() noexcept
 		data.append(generateInfoPerson((*i)));
 	}
 	return data;
-	/*std::string strToReturn = "";
-	for (auto i = people.begin(); i != nullptr; ++i)
-	{
-		Person* ptr = (*i);
-		strToReturn += generateInfoPerson(ptr);
-		strToReturn += "\n";
-	}
-	return strToReturn; */
 }
 

@@ -14,4 +14,7 @@ public:
 	void showGeneratedInfoPerson();
 	void showGeneratedListPayments();
 	void exportListPaymentsToTxt();
+	void addNewPerson() noexcept;
+	void deletePerson();
+	void editPerson();
 };
