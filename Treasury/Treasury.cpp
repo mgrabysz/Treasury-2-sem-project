@@ -1,5 +1,10 @@
 #include "Treasury.h"
 
+bool operator==(Info lhs, Info rhs)
+{
+	return (lhs.name == rhs.name && lhs.surname == rhs.surname && lhs.age == rhs.age && lhs.allPayments == rhs.allPayments);
+}
+
 void Treasury::addPerson(Person* person) noexcept
 {
 	people.push(person);

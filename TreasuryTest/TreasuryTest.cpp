@@ -13,7 +13,15 @@ namespace TreasuryTest
 		{
 			Treasury treasury;
 			treasury.addPerson(new Person("Lukasz", "Kuli", 20));
-			
+			Info exp;
+			exp.id = 1;
+			exp.name = "Lukasz";
+			exp.surname = "Kuli";
+			exp.age = 20;
+			Assert::IsTrue(exp==treasury.generateInfoPerson(1));
 		}
+
+
+
 	};
 }

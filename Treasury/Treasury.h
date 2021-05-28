@@ -9,8 +9,10 @@ struct Info
 	std::string name;
 	std::string surname;
 	int age;
-	int allPayments;
+	int allPayments = 0;
 };
+
+bool operator==(Info lhs, Info rhs);
 
 class Treasury
 {
