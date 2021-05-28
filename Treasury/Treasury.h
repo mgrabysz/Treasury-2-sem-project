@@ -27,5 +27,6 @@ public:
 	void getDataFromJson(std::string path);
 	TwoWayList<Info> showPeople() const noexcept;
 	Info generateInfoPerson(Person* person) noexcept;
+	Info generateInfoPerson(int id);
 	TwoWayList<Info> generateListPayment() noexcept;
 };

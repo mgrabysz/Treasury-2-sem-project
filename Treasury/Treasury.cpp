@@ -70,14 +70,6 @@ TwoWayList<Info> Treasury::showPeople() const noexcept
 		data.append(inf);
 	}
 	return data;
-	/*std::string strToShow = "";
-	int id = 0;
-	for (auto i = people.begin(); i != nullptr; ++i)
-	{	
-		id++;
-		strToShow = strToShow + std::to_string(id) + ". " + (*i)->getName() + " " + (*i)->getSurname() + "\n";
-	}
-	return strToShow;*/
 }
 
 Info Treasury::generateInfoPerson(Person* person) noexcept
@@ -93,6 +85,20 @@ Info Treasury::generateInfoPerson(Person* person) noexcept
 	/*std::string strToReturn = "Name: " + person->getName() + "\tSurname: " + person->getSurname();
 	strToReturn = strToReturn + "\tAge: " + std::to_string(person->getAge()) + " \tAll Payments: " + std::to_string(person->getAllPayments());
 	return strToReturn; */
+}
+
+Info Treasury::generateInfoPerson(int id)
+{
+	int newId = 0;
+	for (auto i = people.begin(); i != nullptr; ++i)
+	{
+		newId++;
+		if (newId == id)
+		{
+			return generateInfoPerson((*i));
+		}
+	}
+	throw std::invalid_argument("There is no person with that id");
 }
 
 TwoWayList<Info> Treasury::generateListPayment() noexcept
