@@ -5,6 +5,7 @@
 
 struct Info
 {
+	int id;
 	std::string name;
 	std::string surname;
 	int age;

@@ -49,36 +49,68 @@ void Treasury::editPerson(int id, Contract newContr) noexcept
 	
 }
 
-std::string Treasury::showPeople() const noexcept
+void Treasury::resetPerson(Person* person) noexcept
 {
-	std::string strToShow = "";
+	person->setAllIncomesSettled(0);
+	person->setAllPayments(0);
+}
+
+TwoWayList<Info> Treasury::showPeople() const noexcept
+{
+	TwoWayList<Info> data;
+	int id = 0;
+	for (auto i = people.begin(); i != nullptr; ++i)
+	{
+		id++;
+		Info inf;
+		inf.id = id;
+		inf.name = (*i)->getName();
+		inf.surname = (*i)->getSurname();
+		inf.age = (*i)->getAge();
+		data.append(inf);
+	}
+	return data;
+	/*std::string strToShow = "";
 	int id = 0;
 	for (auto i = people.begin(); i != nullptr; ++i)
 	{	
 		id++;
 		strToShow = strToShow + std::to_string(id) + ". " + (*i)->getName() + " " + (*i)->getSurname() + "\n";
 	}
-	return strToShow;
+	return strToShow;*/
 }
 
-std::string Treasury::generateInfoPerson(Person* person) noexcept
+Info Treasury::generateInfoPerson(Person* person) noexcept
 {
 	resetPerson(person);
 	calculator.callAllPayments(person);
-	std::string strToReturn = "Name: " + person->getName() + "\tSurname: " + person->getSurname();
+	Info data;
+	data.name = person->getName();
+	data.surname = person->getSurname();
+	data.age = person->getAge();
+	data.allPayments = person->getAllPayments();
+	return data;
+	/*std::string strToReturn = "Name: " + person->getName() + "\tSurname: " + person->getSurname();
 	strToReturn = strToReturn + "\tAge: " + std::to_string(person->getAge()) + " \tAll Payments: " + std::to_string(person->getAllPayments());
-	return strToReturn;
+	return strToReturn; */
 }
 
-std::string Treasury::generateListPayment() noexcept
+TwoWayList<Info> Treasury::generateListPayment() noexcept
 {
-	std::string strToReturn = "";
+	TwoWayList<Info> data;
+	int id = 0;
+	for (auto i = people.begin(); i != nullptr; ++i)
+	{
+		data.append(generateInfoPerson((*i)));
+	}
+	return data;
+	/*std::string strToReturn = "";
 	for (auto i = people.begin(); i != nullptr; ++i)
 	{
 		Person* ptr = (*i);
 		strToReturn += generateInfoPerson(ptr);
 		strToReturn += "\n";
 	}
-	return strToReturn;
+	return strToReturn; */
 }
 

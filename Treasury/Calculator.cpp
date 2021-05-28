@@ -2,7 +2,11 @@
 
 Calculator::Calculator() noexcept
 {
-	
+	payments.append(new Retirement());
+	payments.append(new Pension());
+	payments.append(new Health());
+	payments.append(new Illness());
+	payments.append(new Tax());
 }
 
 void Calculator::callAllPayments(Person* person) noexcept
