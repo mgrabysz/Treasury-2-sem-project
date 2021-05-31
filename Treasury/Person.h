@@ -17,6 +17,8 @@ private:
 	void addContract(Contract contr);
 	void delContract(TwoWayList<Contract>::Iterator iter);
 public:
+	Person(std::string nam, std::string surnam, int ag);
+	
 	std::string getName() const noexcept;
 	std::string getSurname() const noexcept;	
 	int getAge() const noexcept;
@@ -35,5 +37,4 @@ public:
 
 	void addContr(Contract contr); // for testing
 	void delContr(TwoWayList<Contract>::Iterator iter); // for testing
-	Person(std::string nam, std::string surnam, int ag);
 };

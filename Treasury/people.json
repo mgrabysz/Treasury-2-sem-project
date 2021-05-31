@@ -1,0 +1,48 @@
+{
+    "0": {
+        "age": 45,
+        "contracts": {
+            "0": {
+                "type": 0,
+                "value": 1500
+            }
+        },
+        "name": "Barbara",
+        "surname": "Kowalska"
+    },
+    "1": {
+        "age": 30,
+        "name": "Tomasz",
+        "surname": "Wisnia"
+    },
+    "2": {
+        "age": 78,
+        "contracts": {
+            "0": {
+                "type": 2,
+                "value": 200
+            },
+            "1": {
+                "type": 0,
+                "value": 2050
+            }
+        },
+        "name": "Krystyna",
+        "surname": "Malina"
+    },
+    "3": {
+        "age": 53,
+        "contracts": {
+            "0": {
+                "type": 0,
+                "value": 2300
+            },
+            "1": {
+                "type": 1,
+                "value": 500
+            }
+        },
+        "name": "Andrzej",
+        "surname": "Truten"
+    }
+}
