@@ -14,9 +14,9 @@ struct Contract
 	int value;
 	Contract() = default;
 	Contract(contrType typ, int val)
-		:type(typ), value(val)
 	{
-
+		type = typ;
+		value = val;
 	};
 	bool operator==(Contract contr)
 	{

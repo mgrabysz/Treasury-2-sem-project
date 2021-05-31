@@ -32,12 +32,16 @@ void Treasury::editPerson(int id, int contrId)
 		id--;
 		if (id == 0)
 		{
-			for (auto j = (*i)->getContracts().begin(); j != (*i)->getContracts().end(); ++j)
+			auto person = *i;
+			
+			for (auto j = person->getContracts().begin(); j != person->getContracts().end(); ++j)
 			{
 				contrId--;
 				if (contrId == 0)
 				{ 
 					(*i)->delContract(j);
+
+					int siema = 100;
 					return;
 				}	
 			}
@@ -47,7 +51,7 @@ void Treasury::editPerson(int id, int contrId)
 	throw std::invalid_argument("There is no person with that id");
 }
 
-void Treasury::editPerson(int id, Contract newContr)
+void Treasury::editPerson(int id, Contract* newContr)
 {
 	//dodaje nowy kontrakt do n-tej osoby
 	for (auto i = people.begin(); i != people.end(); ++i)
