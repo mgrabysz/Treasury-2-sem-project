@@ -1,23 +1,23 @@
 #include "Person.h"
 
-void Person::addContract(Contract contr)
+void Person::addContract(Contract* contr)
 {
-	allPayments += contr.value;
+	// allPayments += contr.value;
 	contracts.push(contr);
 }
 
-void Person::delContract(TwoWayList<Contract>::Iterator iter)
+void Person::delContract(TwoWayList<Contract*>::Iterator iter)
 {
 	allIncomesSettled += (*iter).value;
 	contracts.del(iter);
 }
 
-void Person::addContr(Contract contr)
+void Person::addContr(Contract* contr)
 {
 	addContract(contr);
 }
 
-void Person::delContr(TwoWayList<Contract>::Iterator iter)
+void Person::delContr(TwoWayList<Contract*>::Iterator iter)
 {
 	delContract(iter);
 }
@@ -54,7 +54,7 @@ int Person::getAllIncomesSettled() const noexcept
 	return allIncomesSettled;
 }
 
-TwoWayList<Contract> Person::getContracts() const noexcept
+TwoWayList<Contract*>& Person::getContracts() noexcept
 {
 	return contracts;
 }
@@ -94,7 +94,7 @@ void Person::incrementAllIncomesSettled(int number)
 	allIncomesSettled += number;
 }
 
-void Person::setContracts(TwoWayList<Contract> contr)
+void Person::setContracts(TwoWayList<Contract*> contr)
 {
 	contracts = contr;
 }

@@ -29,7 +29,7 @@ public:
 	void addPerson(Person* person) noexcept;
 	void deletePerson(int id);
 	void editPerson(int id, int contrId);
-	void editPerson(int id, Contract newContr);
+	void editPerson(int id, Contract* newContr);
 	void getDataFromJson(std::string path);
 	TwoWayList<Info> showPeople() noexcept;
 	Info generateInfoPerson(Person* person) noexcept;

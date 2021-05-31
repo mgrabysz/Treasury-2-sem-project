@@ -4,7 +4,7 @@
 int main()
 {
     Person szary("Lukasz", "Szarejko", 20);
-    Contract biedaKontrakt(zlecenie, 280000);
+    Contract* biedaKontrakt = new Contract(zlecenie, 280000);
     //std::cout << szary.getName() << std::endl;
     //std::cout << biedaKontrakt.value << std::endl;
     Treasury treasury;
