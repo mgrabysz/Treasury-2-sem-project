@@ -8,6 +8,7 @@ void Person::addContract(Contract* contr)
 
 void Person::delContract(TwoWayList<Contract*>::Iterator iter)
 {
+	allIncomesSettled += (*iter).value;
 	contracts.del(iter);
 }
 

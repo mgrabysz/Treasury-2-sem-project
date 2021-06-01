@@ -39,6 +39,9 @@
     <ClInclude Include="Collection.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="json.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Treasury.cpp">
@@ -56,5 +59,10 @@
     <ClCompile Include="ConsoleInterface.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="people.json">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

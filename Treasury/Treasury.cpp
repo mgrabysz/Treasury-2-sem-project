@@ -124,3 +124,77 @@ TwoWayList<Info> Treasury::generateListPayment() noexcept
 	return data;
 }
 
+void Treasury::getDataFromJson(std::string path)
+{
+	std::ifstream reader("people.json");
+	nlohmann::json j = nlohmann::json::parse(reader);
+	reader.close();
+	int i = 0;
+	for (auto& person : j) {
+		std::string name = person["name"];
+		std::string surname = person["surname"];
+		int age = person["age"];
+		TwoWayList<Contract*> contr;
+		for (auto& contract : person["contracts"])
+		{
+			contrType type = contract["type"];
+			int value = contract["value"];
+			Contract contract(type, value);
+			contr.push(&contract);
+		}
+		Person person(name, surname, age);
+		person.setContracts(contr);
+		addPerson(&person);
+	}
+}
+
+//int main()
+//{
+////	//	std::ofstream reader("people.txt");
+////	//	nlohmann::json j;
+////	//	j["0"]["name"] = "Barbara";
+////	//	j["0"]["surname"] = "Kowalska";
+////	//	j["0"]["age"] = 45;
+////	//	j["0"]["contracts"]["0"]["type"] = praca;
+////	//	j["0"]["contracts"]["0"]["value"] = 1500;
+////	//	j["1"]["name"] = "Tomasz";
+////	//	j["1"]["surname"] = "Wisnia";
+////	//	j["1"]["age"] = 30;
+////	//	j["2"]["name"] = "Krystyna";
+////	//	j["2"]["surname"] = "Malina";
+////	//	j["2"]["age"] = 78;
+////	//	j["2"]["contracts"]["0"]["type"] = dzielo;
+////	//	j["2"]["contracts"]["0"]["value"] = 200;
+////	//	j["2"]["contracts"]["1"]["type"] = praca;
+////	//	j["2"]["contracts"]["1"]["value"] = 2050;
+////	//	j["3"]["name"] = "Andrzej";
+////	//	j["3"]["surname"] = "Truten";
+////	//	j["3"]["age"] = 53;
+////	//	j["3"]["contracts"]["0"]["type"] = praca;
+////	//	j["3"]["contracts"]["0"]["value"] = 2300;
+////	//	j["3"]["contracts"]["1"]["type"] = zlecenie;
+////	//	j["3"]["contracts"]["1"]["value"] = 500;
+////	//	reader << j.dump(4);
+////	//	reader.close();
+//	std::ifstream reader("people.json");
+//	nlohmann::json j = nlohmann::json::parse(reader);
+//	reader.close();
+//	int i = 0;
+//	for (auto& person : j) {
+//		std::string name = person["name"];
+//		std::string surname = person["surname"];
+//		int age = person["age"];
+//		TwoWayList<Contract> contr;
+//		for (auto& contract : person["contracts"])
+//		{
+//			contrType type = contract["type"];
+//			int value = contract["value"];
+//			Contract contract(type, value);
+//			contr.push(contract);
+//		}
+//		Person person(name, surname, age);
+//		person.setContracts(contr);
+//		addPerson(person);
+//	}
+//}
+

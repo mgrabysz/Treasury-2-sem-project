@@ -28,6 +28,8 @@ private:
 	void delContract(TwoWayList<Contract*>::Iterator iter);
 	Details details;
 public:
+	Person(std::string nam, std::string surnam, int ag);
+	
 	std::string getName() const noexcept;
 	std::string getSurname() const noexcept;	
 	int getAge() const noexcept;
