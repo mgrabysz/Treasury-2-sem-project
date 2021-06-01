@@ -10,6 +10,7 @@ struct Info
 	std::string surname;
 	int age;
 	int allPayments = 0;
+	// Details details;
 };
 
 bool operator==(Info lhs, Info rhs);
@@ -18,7 +19,7 @@ class Treasury
 {
 private:
 	TwoWayList<Person*> people;
-	Calculator calculator = Calculator();
+	Calculator calculator;
 	void resetPerson(Person* person) noexcept;
 public:
 	Treasury() = default;
@@ -27,8 +28,9 @@ public:
 	void editPerson(int id, int contrId);
 	void editPerson(int id, Contract* newContr);
 	void getDataFromJson(std::string path);
-	TwoWayList<Info> showPeople() noexcept;
+	TwoWayList<Info> showPeople();
 	Info generateInfoPerson(Person* person) noexcept;
 	Info generateInfoPerson(int id);
 	TwoWayList<Info> generateListPayment() noexcept;
+
 };

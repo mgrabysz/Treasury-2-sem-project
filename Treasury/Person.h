@@ -4,6 +4,16 @@
 #include "Contract.h"
 #include "TwoWayList.h"
 
+struct Details
+{
+	int retirement = 0;
+	int pension = 0;
+	int health = 0;
+	int illness = 0;
+	int tax = 0;
+};
+
+
 class Person
 {
 	friend class Treasury;
@@ -16,6 +26,7 @@ private:
 	TwoWayList<Contract*> contracts;
 	void addContract(Contract* contr);
 	void delContract(TwoWayList<Contract*>::Iterator iter);
+	Details details;
 public:
 	std::string getName() const noexcept;
 	std::string getSurname() const noexcept;	
@@ -36,4 +47,6 @@ public:
 	void addContr(Contract* contr); // for testing
 	void delContr(TwoWayList<Contract*>::Iterator iter); // for testing
 	Person(std::string nam, std::string surnam, int ag);
+
+	Details& getDetailsPtr();
 };

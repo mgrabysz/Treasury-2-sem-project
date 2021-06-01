@@ -97,3 +97,8 @@ void Person::setContracts(TwoWayList<Contract*> contr)
 {
 	contracts = contr;
 }
+
+Details& Person::getDetailsPtr()
+{
+	return details;
+}

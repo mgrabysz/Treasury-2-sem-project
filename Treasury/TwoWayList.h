@@ -520,12 +520,12 @@ public:
 
 	};
 
-	Iterator begin()
+	Iterator begin() 
 	{
 		return Iterator(this, first);
 	}
 
-	Iterator end()
+	Iterator end() 
 	{
 		return Iterator(this, nullptr);
 	}
@@ -588,6 +588,40 @@ public:
 	bool empty() const noexcept
 	{
 		return first == nullptr;
+	}
+
+	// copy constructor
+	TwoWayList(TwoWayList const& other)
+	{
+		first = nullptr;
+		last = nullptr;
+
+		for (auto i = other.first; i != nullptr; i = i->next)
+		{
+			push(i->data);
+		}
+	}
+	
+	TwoWayList& operator=(TwoWayList const& other)
+	{
+		// desctruct
+		while (first != nullptr)
+		{
+			Node* n = first->next;
+			delete first;
+			first = n;
+		}
+
+		// copy
+		first = nullptr;
+		last = nullptr;
+
+		for (auto i = other.first; i != nullptr; i = i->next)
+		{
+			push(i->data);
+		}
+
+		return *this;
 	}
 };
 

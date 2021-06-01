@@ -40,8 +40,6 @@ void Treasury::editPerson(int id, int contrId)
 				if (contrId == 0)
 				{ 
 					(*i)->delContract(j);
-
-					int siema = 100;
 					return;
 				}	
 			}
@@ -72,7 +70,7 @@ void Treasury::resetPerson(Person* person) noexcept
 	person->setAllPayments(0);
 }
 
-TwoWayList<Info> Treasury::showPeople() noexcept
+TwoWayList<Info> Treasury::showPeople()
 {
 	TwoWayList<Info> data;
 	int id = 0;
