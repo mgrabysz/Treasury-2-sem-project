@@ -11,8 +11,8 @@ public:
 	ConsoleInterface() = default;
 	void insertPeopleFromJson(std::string path);
 	void showPeopleList() noexcept;
-	void showGeneratedInfoPerson();
-	void exportListPaymentsToJson();
+	void exportGeneratedSettlementPerson();
+	void exportListSettlementToJson();
 	void addNewPerson() noexcept;
 	void deletePerson();
 	void editPerson();
