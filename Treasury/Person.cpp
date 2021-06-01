@@ -2,8 +2,24 @@
 
 void Person::addContract(Contract* contr)
 {
-	// allPayments += contr.value;
-	contracts.push(contr);
+	contrType type = contr->type;
+	for (auto i = contracts.begin(); i != contracts.end(); ++i)
+	{
+		contrType actual = (*i)->type;
+		if (actual > type)
+		{
+			contracts.add(contr, i);
+			break;
+		}
+		++i;
+		contrType next = (*i)->type;
+		--i;
+		if (next != actual && next > type)
+		{
+			contracts.add(contr, i);
+			break;
+		}
+	}
 }
 
 void Person::delContract(TwoWayList<Contract*>::Iterator iter)

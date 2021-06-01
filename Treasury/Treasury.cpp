@@ -137,6 +137,7 @@ TwoWayList<Info> Treasury::generateListPayment() noexcept
 
 void Treasury::getDataFromJson(std::string path)
 {
+	//co jesli contracty w jsonie nie sa w dobrej kolejnosci? moze nie tworzyc listy contractow i potem set contract ale wpychac kazdy contract z osobna?
 	std::ifstream reader("people.json");
 	nlohmann::json j = nlohmann::json::parse(reader);
 	reader.close();
