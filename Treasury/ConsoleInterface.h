@@ -12,8 +12,7 @@ public:
 	void insertPeopleFromJson(std::string path);
 	void showPeopleList() noexcept;
 	void showGeneratedInfoPerson();
-	void showGeneratedListPayments();
-	void exportListPaymentsToTxt();
+	void exportListPaymentsToJson();
 	void addNewPerson() noexcept;
 	void deletePerson();
 	void editPerson();

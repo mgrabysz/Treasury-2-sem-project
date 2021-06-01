@@ -68,6 +68,16 @@ void Treasury::resetPerson(Person* person) noexcept
 {
 	person->setAllIncomesSettled(0);
 	person->setAllPayments(0);
+	person->details.retirement = 0;
+	person->details.pension = 0;
+	person->details.health = 0;
+	person->details.illness = 0;
+	person->details.tax = 0;
+}
+
+void Treasury::addPayment(Payment* payment)
+{
+	calculator.addPayment(payment);
 }
 
 TwoWayList<Info> Treasury::showPeople()
@@ -96,6 +106,7 @@ Info Treasury::generateInfoPerson(Person* person) noexcept
 	data.surname = person->getSurname();
 	data.age = person->getAge();
 	data.allPayments = person->getAllPayments();
+	data.details = person->details;
 	return data;
 }
 

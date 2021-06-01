@@ -14,7 +14,7 @@ struct Info
 	std::string surname;
 	int age;
 	int allPayments = 0;
-	// Details details;
+	Details details;
 };
 
 bool operator==(Info lhs, Info rhs);
@@ -31,6 +31,7 @@ public:
 	void deletePerson(int id);
 	void editPerson(int id, int contrId);
 	void editPerson(int id, Contract* newContr);
+	void addPayment(Payment* payment);
 	void getDataFromJson(std::string path);
 	TwoWayList<Info> showPeople();
 	Info generateInfoPerson(Person* person) noexcept;

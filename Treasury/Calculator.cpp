@@ -22,7 +22,7 @@ void Calculator::callAllPayments(Person* person) noexcept
 	}
 }
 
-void Calculator::addPayment(Payment*  newPay) noexcept 
+void Calculator::addPayment(Payment* newPay) noexcept 
 {
 
 	payments.push(newPay);
