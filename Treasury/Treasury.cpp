@@ -146,17 +146,14 @@ void Treasury::getDataFromJson(std::string path)
 		std::string name = person["name"];
 		std::string surname = person["surname"];
 		int age = person["age"];
-		TwoWayList<Contract*> contr;
+		Person pers(name, surname, age);
 		for (auto& contract : person["contracts"])
 		{
 			contrType type = contract["type"];
 			int value = contract["value"];
-			Contract contract(type, value);
-			contr.push(&contract);
+			pers.addContract(new Contract(type, value));
 		}
-		Person person(name, surname, age);
-		person.setContracts(contr);
-		addPerson(&person);
+		addPerson(&pers);
 	}
 }
 
