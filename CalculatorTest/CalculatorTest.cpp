@@ -11,6 +11,7 @@ namespace CalculatorTest
 		
 		TEST_METHOD(TestMethod1)
 		{
+
 		}
 	};
 }

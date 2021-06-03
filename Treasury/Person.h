@@ -48,7 +48,6 @@ public:
 
 	void addContr(Contract* contr); // for testing
 	void delContr(TwoWayList<Contract*>::Iterator iter); // for testing
-	Person(std::string nam, std::string surnam, int ag);
 
 	Details& getDetailsPtr();
 };
