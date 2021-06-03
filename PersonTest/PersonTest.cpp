@@ -22,11 +22,9 @@ namespace PersonTest
 		TEST_METHOD(Test_person_add_contract)
 		{
 			Person janusz("Janusz", "Kowalski", 29);
-			Contract contr(zlecenie, 3500);
-			Contract contr2(praca, 3000);
-			janusz.addContr(contr);
+			janusz.addContr(new Contract(zlecenie, 3500));
 			Assert::AreEqual(3500, janusz.getAllPayments());
-			janusz.addContr(contr2);
+			janusz.addContr(new Contract(praca, 3000));
 			Assert::AreEqual(6500, janusz.getAllPayments());
 			Assert::IsTrue(0 == janusz.getAllIncomesSettled());
 		}
@@ -34,10 +32,8 @@ namespace PersonTest
 		TEST_METHOD(Test_person_remove_contract)
 		{
 			Person janusz("Janusz", "Kowalski", 29);
-			Contract contr(zlecenie, 3500);
-			Contract contr2(praca, 3000);
-			janusz.addContr(contr);
-			janusz.addContr(contr2);
+			janusz.addContr(new Contract(zlecenie, 3500));
+			janusz.addContr(new Contract(praca, 3000));
 			Assert::IsTrue(0 == janusz.getAllIncomesSettled());
 			janusz.delContr(janusz.getContracts().begin());
 			Assert::IsTrue(3500 == janusz.getAllIncomesSettled());
