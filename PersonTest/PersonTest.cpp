@@ -24,12 +24,46 @@ namespace PersonTest
 			Person janusz("Janusz", "Kowalski", 29);
 			Contract contr1 = Contract(zlecenie, 3500);
 			Contract contr2 = Contract(praca, 3900);
+			Contract contr3 = Contract(dzielo, 250);
 			janusz.addContr(contr1);
 			janusz.addContr(contr2);
+			janusz.addContr(contr3);
 			auto iter = janusz.getContracts().begin();
 			Assert::IsTrue((*iter).value == 3900);
 			++iter;
 			Assert::IsTrue((*iter).value == 3500);
+			++iter;
+			Assert::IsTrue((*iter).value == 250);
+		}
+
+		TEST_METHOD(Test_person_add_contract_segregation)
+		{
+			Person janusz("Janusz", "Kowalski", 29);
+			Contract contr1 = Contract(zlecenie, 1);
+			Contract contr2 = Contract(praca, 2);
+			Contract contr3 = Contract(dzielo, 3);
+			Contract contr4 = Contract(zlecenie, 4);
+			Contract contr5 = Contract(praca, 5);
+			Contract contr6 = Contract(dzielo, 6);
+			janusz.addContr(contr1);
+			janusz.addContr(contr2);
+			janusz.addContr(contr3);
+			janusz.addContr(contr4);
+			janusz.addContr(contr5);
+			janusz.addContr(contr6);
+			auto iter = janusz.getContracts().begin();
+			Assert::IsTrue((*iter).type == praca);
+			++iter;
+			Assert::IsTrue((*iter).type == praca);
+			++iter;
+			Assert::IsTrue((*iter).type == zlecenie);
+			++iter;
+			Assert::IsTrue((*iter).type == zlecenie);
+			++iter;
+			Assert::IsTrue((*iter).type == dzielo);
+			++iter;
+			Assert::IsTrue((*iter).type == dzielo);
+			++iter;
 		}
 
 		TEST_METHOD(Test_person_remove_contract)

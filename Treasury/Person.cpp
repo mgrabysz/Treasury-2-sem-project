@@ -9,22 +9,22 @@ void Person::addContract(Contract contr)
 	else
 	{
 		contrType type = contr.type;
-		for (auto i = contracts.begin(); i != contracts.end(); ++i)
+		auto i = contracts.begin();
+		if (type == praca)
 		{
-			contrType actual = (*i).type;
-			if (actual > type)
+			contracts.add(contr, i);
+		}
+		else if (type == dzielo)
+		{
+			contracts.push(contr);
+		}
+		else
+		{
+			while ((*i).type == praca)
 			{
-				contracts.add(contr, i);
-				break;
+				++i;
 			}
-			++i;
-			contrType next = (*i).type;
-			--i;
-			if (next != actual && next > type)
-			{
-				contracts.add(contr, i);
-				break;
-			}
+			contracts.add(contr, i);
 		}
 	}
 }
