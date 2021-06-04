@@ -129,7 +129,7 @@ void ConsoleInterface::editPerson()
 						std::cout << "Wrong income";
 						continue;
 					}
-					treasury.editPerson(id, new Contract(type, income));
+					treasury.editPerson(id, Contract(type, income));
 					break;
 				}
 			}

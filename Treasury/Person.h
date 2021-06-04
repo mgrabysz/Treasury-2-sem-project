@@ -23,9 +23,9 @@ private:
 	char age;
 	int allPayments = 0;
 	int allIncomesSettled = 0;
-	TwoWayList<Contract*> contracts;
-	void addContract(Contract* contr);
-	void delContract(TwoWayList<Contract*>::Iterator iter);
+	TwoWayList<Contract> contracts;
+	void addContract(Contract contr);
+	void delContract(TwoWayList<Contract>::Iterator iter);
 	Details details;
 public:
 	Person(std::string nam, std::string surnam, int ag);
@@ -35,7 +35,7 @@ public:
 	int getAge() const noexcept;
 	int getAllPayments() const noexcept;
 	int getAllIncomesSettled() const noexcept;
-	TwoWayList<Contract*>& getContracts() noexcept;
+	TwoWayList<Contract>& getContracts() noexcept;
 
 	void setName(std::string nam);
 	void setSurname(std::string surnam);
@@ -44,10 +44,10 @@ public:
 	void incrementAllPayments(int number);
 	void setAllIncomesSettled(int number);
 	void incrementAllIncomesSettled(int number);
-	void setContracts(TwoWayList<Contract*> contr);
+	void setContracts(TwoWayList<Contract> contr);
 
-	void addContr(Contract* contr); // for testing
-	void delContr(TwoWayList<Contract*>::Iterator iter); // for testing
+	void addContr(Contract contr); // for testing
+	void delContr(TwoWayList<Contract>::Iterator iter); // for testing
 
 	Details& getDetailsPtr();
 };

@@ -16,7 +16,7 @@ void Calculator::callAllPayments(Person* person) noexcept
 	{
 		for (auto i = payments.begin(); i != payments.end(); ++i)
 		{
-			Contract con = **j;
+			Contract con = *j;
 			(*i)->calculate(person, con);
 		}
 	}

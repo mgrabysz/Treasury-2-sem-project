@@ -49,7 +49,7 @@ void Treasury::editPerson(int id, int contrId)
 	throw std::invalid_argument("There is no person with that id");
 }
 
-void Treasury::editPerson(int id, Contract* newContr)
+void Treasury::editPerson(int id, Contract newContr)
 {
 	//dodaje nowy kontrakt do n-tej osoby
 	for (auto i = people.begin(); i != people.end(); ++i)
@@ -150,7 +150,7 @@ void Treasury::getDataFromJson(std::string path)
 		{
 			contrType type = contract["type"];
 			int value = contract["value"];
-			pers.addContract(new Contract(type, value));
+			pers.addContract(Contract(type, value));
 		}
 		addPerson(&pers);
 	}

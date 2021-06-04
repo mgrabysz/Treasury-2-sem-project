@@ -39,7 +39,7 @@ namespace TreasuryTest
 		{
 			Treasury treasury;
 			Person* ptr = new Person("Lukasz", "Kuli", 20);
-			ptr->addContr(new Contract(praca, 2000));
+			ptr->addContr(Contract(praca, 2000));
 			treasury.addPerson(ptr);
 			Assert::IsFalse((ptr->getContracts()).empty());
 			treasury.editPerson(1, 1);
@@ -52,7 +52,7 @@ namespace TreasuryTest
 			Person* ptr = new Person("Lukasz", "Kuli", 20);
 			treasury.addPerson(ptr);
 			Assert::IsTrue((ptr->getContracts()).empty());
-			treasury.editPerson(1, new Contract(praca, 1000));
+			treasury.editPerson(1, Contract(praca, 1000));
 			Assert::IsFalse((ptr->getContracts()).empty());
 		}
 
@@ -62,7 +62,7 @@ namespace TreasuryTest
 			Person* ptr = new Person("Lukasz", "Kuli", 20);
 			treasury.addPerson(ptr);
 			Assert::IsTrue((ptr->getContracts()).empty());
-			Assert::ExpectException<std::invalid_argument>([&] {treasury.editPerson(2, new Contract(praca, 1000)); });
+			Assert::ExpectException<std::invalid_argument>([&] {treasury.editPerson(2, Contract(praca, 1000)); });
 		}
 
 		TEST_METHOD(TreasuryEditPersonDeleteInvalid)
@@ -70,7 +70,7 @@ namespace TreasuryTest
 			Treasury treasury;
 			Person* ptr = new Person("Lukasz", "Kuli", 20);
 			treasury.addPerson(ptr);
-			treasury.editPerson(1, new Contract(praca, 1000));
+			treasury.editPerson(1, Contract(praca, 1000));
 			Assert::IsFalse((ptr->getContracts()).empty());
 			Assert::ExpectException<std::invalid_argument>([&] {treasury.editPerson(2, 1); });
 		}

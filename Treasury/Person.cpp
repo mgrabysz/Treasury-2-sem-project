@@ -1,39 +1,46 @@
 #include "Person.h"
 
-void Person::addContract(Contract* contr)
+void Person::addContract(Contract contr)
 {
-	contrType type = contr->type;
-	for (auto i = contracts.begin(); i != contracts.end(); ++i)
+	if (contracts.empty())
 	{
-		contrType actual = (*i)->type;
-		if (actual > type)
+		contracts.push(contr);
+	}
+	else
+	{
+		contrType type = contr.type;
+		for (auto i = contracts.begin(); i != contracts.end(); ++i)
 		{
-			contracts.add(contr, i);
-			break;
-		}
-		++i;
-		contrType next = (*i)->type;
-		--i;
-		if (next != actual && next > type)
-		{
-			contracts.add(contr, i);
-			break;
+			contrType actual = (*i).type;
+			if (actual > type)
+			{
+				contracts.add(contr, i);
+				break;
+			}
+			++i;
+			contrType next = (*i).type;
+			--i;
+			if (next != actual && next > type)
+			{
+				contracts.add(contr, i);
+				break;
+			}
 		}
 	}
 }
 
-void Person::delContract(TwoWayList<Contract*>::Iterator iter)
+void Person::delContract(TwoWayList<Contract>::Iterator iter)
 {
 	//allIncomesSettled += (*iter).value;
 	contracts.del(iter);
 }
 
-void Person::addContr(Contract* contr)
+void Person::addContr(Contract contr)
 {
 	addContract(contr);
 }
 
-void Person::delContr(TwoWayList<Contract*>::Iterator iter)
+void Person::delContr(TwoWayList<Contract>::Iterator iter)
 {
 	delContract(iter);
 }
@@ -70,7 +77,7 @@ int Person::getAllIncomesSettled() const noexcept
 	return allIncomesSettled;
 }
 
-TwoWayList<Contract*>& Person::getContracts() noexcept
+TwoWayList<Contract>& Person::getContracts() noexcept
 {
 	return contracts;
 }
@@ -110,7 +117,7 @@ void Person::incrementAllIncomesSettled(int number)
 	allIncomesSettled += number;
 }
 
-void Person::setContracts(TwoWayList<Contract*> contr)
+void Person::setContracts(TwoWayList<Contract> contr)
 {
 	contracts = contr;
 }

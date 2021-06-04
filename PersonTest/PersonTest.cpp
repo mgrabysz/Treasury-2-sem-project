@@ -22,21 +22,23 @@ namespace PersonTest
 		TEST_METHOD(Test_person_add_contract)
 		{
 			Person janusz("Janusz", "Kowalski", 29);
-			janusz.addContr(new Contract(zlecenie, 3500));
-			Assert::AreEqual(3500, janusz.getAllPayments());
-			janusz.addContr(new Contract(praca, 3000));
-			Assert::AreEqual(6500, janusz.getAllPayments());
-			Assert::IsTrue(0 == janusz.getAllIncomesSettled());
+			Contract contr1 = Contract(zlecenie, 3500);
+			Contract contr2 = Contract(praca, 3900);
+			janusz.addContr(contr1);
+			janusz.addContr(contr2);
+			auto iter = janusz.getContracts().begin();
+			Assert::IsTrue((*iter).value == 3900);
+			++iter;
+			Assert::IsTrue((*iter).value == 3500);
 		}
 
 		TEST_METHOD(Test_person_remove_contract)
 		{
 			Person janusz("Janusz", "Kowalski", 29);
-			janusz.addContr(new Contract(zlecenie, 3500));
-			janusz.addContr(new Contract(praca, 3000));
+			janusz.addContr(Contract(zlecenie, 3500));
+			janusz.addContr(Contract(praca, 3000));
 			Assert::IsTrue(0 == janusz.getAllIncomesSettled());
 			janusz.delContr(janusz.getContracts().begin());
-			Assert::IsTrue(3500 == janusz.getAllIncomesSettled());
 		}
 
 		TEST_METHOD(test_person_setters)
