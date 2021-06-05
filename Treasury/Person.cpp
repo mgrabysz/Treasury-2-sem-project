@@ -2,36 +2,26 @@
 
 void Person::addContract(Contract contr)
 {
-	if (contracts.empty())
-	{
+	auto i = contracts.begin();
+	switch (contr.type) {
+	case praca:
+		contracts.add(contr, i);
+		break;
+	case dzielo:
 		contracts.push(contr);
-	}
-	else
-	{
-		contrType type = contr.type;
-		auto i = contracts.begin();
-		if (type == praca)
+		break;
+	case zlecenie:
+		for (i; i != contracts.end(); ++i)
 		{
-			contracts.add(contr, i);
+			if ((*i).type != praca)
+				break;
 		}
-		else if (type == dzielo)
-		{
-			contracts.push(contr);
-		}
-		else
-		{
-			while ((*i).type == praca)
-			{
-				++i;
-			}
-			contracts.add(contr, i);
-		}
+		contracts.add(contr, i);
 	}
 }
 
 void Person::delContract(TwoWayList<Contract>::Iterator iter)
 {
-	//allIncomesSettled += (*iter).value;
 	contracts.del(iter);
 }
 

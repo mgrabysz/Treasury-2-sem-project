@@ -50,7 +50,7 @@ namespace CalculatorTest
 			Assert::AreEqual(122500, details.illness);
 			Assert::AreEqual(1190000, details.tax);
 			Assert::AreEqual(2505500, halpert->getAllPayments());
-			Assert::AreEqual(2000000, halpert->getAllIncomesSettled());
+			Assert::AreEqual(7000000, halpert->getAllIncomesSettled());
 		}
 	};
 }
