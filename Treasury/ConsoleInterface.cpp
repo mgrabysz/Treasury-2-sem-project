@@ -28,12 +28,27 @@ void ConsoleInterface::exportGeneratedSettlementPerson()
 		try
 		{
 			Info data = treasury.generateInfoPerson(id);
+			std::string filename = data.name + '_' + data.surname + ".json";
 			//tu bartek musisz zrobic export tych danych do jsona dla tej osoby konkretnej
+			std::ofstream file(filename);
+			nlohmann::json json;
+			json["id"] = data.id;
+			json["name"] = data.name;
+			json["surname"] = data.surname;
+			json["age"] = data.age;
+			json["allPayments"] = data.allPayments;
+			json["details"]["health"] = data.details.health;
+			json["details"]["illness"] = data.details.illness;
+			json["details"]["pension"] = data.details.pension;
+			json["details"]["retirement"] = data.details.retirement;
+			json["details"]["tax"] = data.details.tax;
+			file << json.dump(4);
+			file.close();
 			break;
 		}
 		catch (std::invalid_argument)
 		{
-			std::cout << "There is no person with that id!\n";
+			std::cerr << "There is no person with that id!\n";
 		}
 	}
 }
@@ -73,7 +88,7 @@ void ConsoleInterface::deletePerson()
 		}
 		catch (std::invalid_argument)
 		{
-			std::cout << "There is no person with that id!\n";
+			std::cerr << "There is no person with that id!\n";
 		}
 	}
 }
@@ -107,7 +122,7 @@ void ConsoleInterface::editPerson()
 					}
 					catch (std::invalid_argument)
 					{
-						std::cout << "Invalid contract id!\n";
+						std::cerr << "Invalid contract id!\n";
 					}
 				}
 				else if (ch == 2)
@@ -117,7 +132,7 @@ void ConsoleInterface::editPerson()
 					std::cin >> cType;
 					if (cType < 0 || cType > 2)
 					{
-						std::cout << "Wrong type of contract";
+						std::cerr << "Wrong type of contract";
 						continue;
 					}
 					contrType type = static_cast<contrType>(cType);
@@ -126,7 +141,7 @@ void ConsoleInterface::editPerson()
 					std::cin >> income;
 					if (income < 0)
 					{
-						std::cout << "Wrong income";
+						std::cerr << "Wrong income";
 						continue;
 					}
 					treasury.editPerson(id, Contract(type, income));
@@ -137,13 +152,79 @@ void ConsoleInterface::editPerson()
 		}
 		catch (std::invalid_argument)
 		{
-			std::cout << "There is no person with that id!\n";
+			std::cerr << "There is no person with that id!\n";
 		}
 	}
 }
 
 void ConsoleInterface::exportListSettlementToJson()
 {
-	TwoWayList<Info> data = treasury.generateListPayment();
-	//bartek na podstawie data do jsona 
+	TwoWayList<Info> list = treasury.generateListPayment();
+	nlohmann::json mainjson;
+	int i = 0;
+	for (Info data : list)
+	{
+		mainjson[i]["id"] = data.id;
+		mainjson[i]["name"] = data.name;
+		mainjson[i]["surname"] = data.surname;
+		mainjson[i]["age"] = data.age;
+		mainjson[i]["allPayments"] = data.allPayments;
+		mainjson[i]["details"]["health"] = data.details.health;
+		mainjson[i]["details"]["illness"] = data.details.illness;
+		mainjson[i]["details"]["pension"] = data.details.pension;
+		mainjson[i]["details"]["retirement"] = data.details.retirement;
+		mainjson[i]["details"]["tax"] = data.details.tax;
+		i++;
+	}
+	std::ofstream file("List_Settlement.json");
+	file << mainjson.dump(4);
+	file.close();
 }
+
+//int main()
+//{
+//	Info data;
+//	data.id = 10;
+//	data.name = "Lukasz";
+//	data.surname = "judasz";
+//	data.age = 38;
+//	data.allPayments = 1234;
+//	data.details.health = 1;
+//	data.details.illness = 2;
+//	data.details.pension = 3;
+//	data.details.retirement = 4;
+//	data.details.tax = 5;
+//	Info data2;
+//	data2.id = 11;
+//	data2.name = "Marcin";
+//	data2.surname = "Iskariota";
+//	data2.age = 58;
+//	data2.allPayments = 12134;
+//	data2.details.health = 1;
+//	data2.details.illness = 2;
+//	data2.details.pension = 3;
+//	data2.details.retirement = 4;
+//	data2.details.tax = 5;
+//	TwoWayList<Info> list;
+//	list.push(data);
+//	list.push(data2);
+//	nlohmann::json mainjson;
+//	int i = 0;
+//	for (Info data : list)
+//	{
+//		mainjson[i]["id"] = data.id;
+//		mainjson[i]["name"] = data.name;
+//		mainjson[i]["surname"] = data.surname;
+//		mainjson[i]["age"] = data.age;
+//		mainjson[i]["allPayments"] = data.allPayments;
+//		mainjson[i]["details"]["health"] = data.details.health;
+//		mainjson[i]["details"]["illness"] = data.details.illness;
+//		mainjson[i]["details"]["pension"] = data.details.pension;
+//		mainjson[i]["details"]["retirement"] = data.details.retirement;
+//		mainjson[i]["details"]["tax"] = data.details.tax;
+//		i++;
+//	}
+//	std::ofstream file("List_Settlement.json");
+//	file << mainjson.dump(4);
+//	file.close();
+//}

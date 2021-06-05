@@ -1,0 +1,14 @@
+{
+    "age": 38,
+    "allPayments": 1234,
+    "details": {
+        "health": 1,
+        "illness": 2,
+        "pension": 3,
+        "retirement": 4,
+        "tax": 5
+    },
+    "id": 10,
+    "name": "Lukasz",
+    "surname": "judasz"
+}
