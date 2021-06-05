@@ -25,7 +25,6 @@ namespace PaymentTests
 			int payment = retirementCalc.calculate(scott, contract);
 			
 			Assert::AreEqual(78080, payment);
-			Assert::AreEqual(1560000, scott->getAllIncomesSettled());
 			Assert::AreEqual(103680, scott->getAllPayments());
 		}
 		
@@ -41,7 +40,6 @@ namespace PaymentTests
 			int payment = retirementCalc.calculate(scott, contract);
 
 			Assert::AreEqual(78080, payment);
-			Assert::AreEqual(1560000, scott->getAllIncomesSettled());
 			Assert::AreEqual(103680, scott->getAllPayments());
 		}
 		TEST_METHOD(RetirementCivilGreaterThanMinAnnual)
@@ -56,7 +54,6 @@ namespace PaymentTests
 			int payment = retirementCalc.calculate(scott, contract);
 
 			Assert::AreEqual(0, payment);
-			Assert::AreEqual(5878000, scott->getAllIncomesSettled());
 			Assert::AreEqual(25600, scott->getAllPayments());
 		}
 		TEST_METHOD(RetirementCivilUnderAge)
@@ -71,7 +68,6 @@ namespace PaymentTests
 			int payment = retirementCalc.calculate(scott, contract);
 
 			Assert::AreEqual(0, payment);
-			Assert::AreEqual(5878000, scott->getAllIncomesSettled());
 			Assert::AreEqual(25600, scott->getAllPayments());
 		}
 		TEST_METHOD(RetirementComission)
@@ -86,7 +82,6 @@ namespace PaymentTests
 			int payment = retirementCalc.calculate(scott, contract);
 
 			Assert::AreEqual(0, payment);
-			Assert::AreEqual(1560000, scott->getAllIncomesSettled());
 			Assert::AreEqual(25600, scott->getAllPayments());
 		}
 
@@ -102,7 +97,6 @@ namespace PaymentTests
 			int payment = pensionCalc.calculate(scott, contract);
 
 			Assert::AreEqual(90000, payment);
-			Assert::AreEqual(13891000, scott->getAllIncomesSettled());
 			Assert::AreEqual(435600, scott->getAllPayments());
 		}
 		TEST_METHOD(PensionCivilLowerThanMinAnnual)
@@ -117,7 +111,6 @@ namespace PaymentTests
 			int payment = pensionCalc.calculate(scott, contract);
 
 			Assert::AreEqual(90000, payment);
-			Assert::AreEqual(8233300, scott->getAllIncomesSettled());
 			Assert::AreEqual(435600, scott->getAllPayments());
 		}
 		TEST_METHOD(PensionCivilGreaterThanMinAnnual)
@@ -132,7 +125,6 @@ namespace PaymentTests
 			int payment = pensionCalc.calculate(scott, contract);
 
 			Assert::AreEqual(0, payment);
-			Assert::AreEqual(13891000, scott->getAllIncomesSettled());
 			Assert::AreEqual(345600, scott->getAllPayments());
 		}
 		TEST_METHOD(PensionCivilUnderAge)
@@ -147,7 +139,6 @@ namespace PaymentTests
 			int payment = pensionCalc.calculate(scott, contract);
 
 			Assert::AreEqual(0, payment);
-			Assert::AreEqual(8233300, scott->getAllIncomesSettled());
 			Assert::AreEqual(345600, scott->getAllPayments());
 		}
 		TEST_METHOD(PensionComission)
@@ -162,7 +153,6 @@ namespace PaymentTests
 			int payment = pensionCalc.calculate(scott, contract);
 
 			Assert::AreEqual(0, payment);
-			Assert::AreEqual(8233300, scott->getAllIncomesSettled());
 			Assert::AreEqual(345600, scott->getAllPayments());
 		}
 
@@ -178,7 +168,6 @@ namespace PaymentTests
 			int payment = healthCalc.calculate(scott, contract);
 
 			Assert::AreEqual(540000, payment);
-			Assert::AreEqual(11678900, scott->getAllIncomesSettled());
 			Assert::AreEqual(663400, scott->getAllPayments());
 		}
 		TEST_METHOD(HealthCivil)
@@ -193,7 +182,6 @@ namespace PaymentTests
 			int payment = healthCalc.calculate(scott, contract);
 
 			Assert::AreEqual(540000, payment);
-			Assert::AreEqual(11678900, scott->getAllIncomesSettled());
 			Assert::AreEqual(663400, scott->getAllPayments());
 		}
 		TEST_METHOD(HealthCivilUnderAge)
@@ -208,7 +196,6 @@ namespace PaymentTests
 			int payment = healthCalc.calculate(scott, contract);
 
 			Assert::AreEqual(0, payment);
-			Assert::AreEqual(11678900, scott->getAllIncomesSettled());
 			Assert::AreEqual(123400, scott->getAllPayments());
 		}
 		TEST_METHOD(HealthComission)
@@ -223,7 +210,6 @@ namespace PaymentTests
 			int payment = healthCalc.calculate(scott, contract);
 
 			Assert::AreEqual(0, payment);
-			Assert::AreEqual(11678900, scott->getAllIncomesSettled());
 			Assert::AreEqual(123400, scott->getAllPayments());
 		}
 
@@ -239,7 +225,6 @@ namespace PaymentTests
 			int payment = illnessCalc.calculate(scott, contract);
 
 			Assert::AreEqual(19600, payment);
-			Assert::AreEqual(1560000, scott->getAllIncomesSettled());
 			Assert::AreEqual(45200, scott->getAllPayments());
 		}
 		TEST_METHOD(IllnessCivil)
@@ -254,7 +239,6 @@ namespace PaymentTests
 			int payment = illnessCalc.calculate(scott, contract);
 
 			Assert::AreEqual(0, payment);
-			Assert::AreEqual(1560000, scott->getAllIncomesSettled());
 			Assert::AreEqual(25600, scott->getAllPayments());
 		}
 		TEST_METHOD(IllnessComission)
@@ -269,7 +253,6 @@ namespace PaymentTests
 			int payment = illnessCalc.calculate(scott, contract);
 
 			Assert::AreEqual(0, payment);
-			Assert::AreEqual(1560000, scott->getAllIncomesSettled());
 			Assert::AreEqual(25600, scott->getAllPayments());
 		}
 
@@ -300,7 +283,6 @@ namespace PaymentTests
 			int payment = taxCalculator.calculate(scott, contract);
 
 			Assert::AreEqual(1917080, payment);
-			Assert::AreEqual(10760000, scott->getAllIncomesSettled());
 			Assert::AreEqual(1942680, scott->getAllPayments());
 		}
 		TEST_METHOD(TaxEmploymentUnderAge)
@@ -315,7 +297,6 @@ namespace PaymentTests
 			int payment = taxCalculator.calculate(scott, contract);
 
 			Assert::AreEqual(463104, payment);
-			Assert::AreEqual(10760000, scott->getAllIncomesSettled());
 			Assert::AreEqual(488704, scott->getAllPayments());
 		}
 		TEST_METHOD(TaxCivilOverAge)
@@ -330,7 +311,6 @@ namespace PaymentTests
 			int payment = taxCalculator.calculate(scott, contract);
 
 			Assert::AreEqual(170000, payment);
-			Assert::AreEqual(1760000, scott->getAllIncomesSettled());
 			Assert::AreEqual(195600, scott->getAllPayments());
 		}
 		TEST_METHOD(TaxCivilUnderAge)
@@ -345,7 +325,6 @@ namespace PaymentTests
 			int payment = taxCalculator.calculate(scott, contract);
 
 			Assert::AreEqual(0, payment);
-			Assert::AreEqual(1760000, scott->getAllIncomesSettled());
 			Assert::AreEqual(25600, scott->getAllPayments());
 		}
 		TEST_METHOD(TaxComission)
@@ -360,8 +339,15 @@ namespace PaymentTests
 			int payment = taxCalculator.calculate(scott, contract);
 
 			Assert::AreEqual(1917080, payment);
-			Assert::AreEqual(10760000, scott->getAllIncomesSettled());
 			Assert::AreEqual(1942680, scott->getAllPayments());
 		}
+
+		/*TEST_METHOD(TaxOverTreshold_blaalala)
+		{
+			Tax taxCalculator;
+
+			int tax = taxCalculator.taxWithTreshold(5000000);
+			Assert::AreEqual(1773976, tax);
+		}*/
 	};
 }

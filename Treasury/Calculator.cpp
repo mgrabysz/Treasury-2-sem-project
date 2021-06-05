@@ -14,11 +14,15 @@ void Calculator::callAllPayments(Person* person) noexcept
 	
 	for (auto j = person->getContracts().begin(); j != person->getContracts().end(); ++j)
 	{
+		Contract con = *j;
+
 		for (auto i = payments.begin(); i != payments.end(); ++i)
 		{
-			Contract con = *j;
 			(*i)->calculate(person, con);
 		}
+
+		int value = con.value;
+		person->incrementAllIncomesSettled(value);
 	}
 }
 

@@ -18,7 +18,6 @@ int Retirement::calculate(Person* person, Contract& contract)
 		break;
 	}
 
-	person->incrementAllIncomesSettled(earnings);
 	person->incrementAllPayments(payment);	
 	person->getDetailsPtr().retirement += payment;
 
@@ -40,7 +39,6 @@ int Pension::calculate(Person* person, Contract& contract)
 		break;
 	}
 
-	person->incrementAllIncomesSettled(earnings);
 	person->incrementAllPayments(payment);
 	person->getDetailsPtr().pension += payment;
 
@@ -62,7 +60,6 @@ int Health::calculate(Person* person, Contract& contract)
 		break;
 	}
 
-	person->incrementAllIncomesSettled(earnings);
 	person->incrementAllPayments(payment);
 	person->getDetailsPtr().health += payment;
 
@@ -78,7 +75,6 @@ int Illness::calculate(Person* person, Contract& contract)
 		payment = earnings * 0.0245;
 	}
 
-	person->incrementAllIncomesSettled(earnings);
 	person->incrementAllPayments(payment);
 	person->getDetailsPtr().illness += payment;
 
@@ -106,7 +102,6 @@ int Tax::calculate(Person* person, Contract& contract)
 		}
 	}
 
-	person->incrementAllIncomesSettled(earnings);
 	person->incrementAllPayments(payment);
 	person->getDetailsPtr().tax += payment;
 
