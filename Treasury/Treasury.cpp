@@ -140,8 +140,7 @@ void Treasury::getDataFromJson(std::string path)
 	std::ifstream reader(path);
 	if (!reader.good())
 	{
-		std::cerr << "File does not exist.";
-		abort();
+		throw std::invalid_argument("Wrong path!");
 	}
 	nlohmann::json j = nlohmann::json::parse(reader);
 	reader.close();
