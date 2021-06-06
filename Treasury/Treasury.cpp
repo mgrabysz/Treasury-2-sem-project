@@ -137,7 +137,12 @@ TwoWayList<Info> Treasury::generateListPayment() noexcept
 
 void Treasury::getDataFromJson(std::string path)
 {
-	std::ifstream reader("people.json");
+	std::ifstream reader(path);
+	if (!reader.good())
+	{
+		std::cerr << "File does not exist.";
+		abort();
+	}
 	nlohmann::json j = nlohmann::json::parse(reader);
 	reader.close();
 	int i = 0;
