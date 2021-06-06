@@ -4,17 +4,24 @@
 int main()
 {
 	ConsoleInterface cInterface;
-	std::cout << "Welcome in Treasury!\nImporting data from json...\n";
-	std::string path = "people.json";
-	try
+	std::cout << "Welcome in Treasury!\nInput path to file with data to import: \n";
+	std::string path;
+	bool startedReady = false;
+	while (!startedReady)
 	{
-		cInterface.insertPeopleFromJson(path);
-		std::cout << "Done!";
+		std::cin >> path;
+		try
+		{
+			cInterface.insertPeopleFromJson(path);
+			std::cout << "Inserting data completed!";
+			startedReady = true;
+		}
+		catch (std::invalid_argument)
+		{
+			std::cout << "Incorrect path to json file!\nTry again!\n";
+		}
 	}
-	catch (std::invalid_argument)
-	{
-		std::cout << "Incorrect path to json file!\n";
-	}
+	
 	bool end = false;
 	int opt = 0;
 	
