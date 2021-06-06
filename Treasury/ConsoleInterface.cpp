@@ -32,7 +32,6 @@ void ConsoleInterface::exportGeneratedSettlementPerson()
 			//tu bartek musisz zrobic export tych danych do jsona dla tej osoby konkretnej
 			std::ofstream file(filename);
 			nlohmann::json json;
-			json["id"] = data.id;
 			json["name"] = data.name;
 			json["surname"] = data.surname;
 			json["age"] = data.age;
@@ -164,7 +163,6 @@ void ConsoleInterface::exportListSettlementToJson()
 	int i = 0;
 	for (Info data : list)
 	{
-		mainjson[i]["id"] = data.id;
 		mainjson[i]["name"] = data.name;
 		mainjson[i]["surname"] = data.surname;
 		mainjson[i]["age"] = data.age;
