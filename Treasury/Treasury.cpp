@@ -146,17 +146,25 @@ void Treasury::getDataFromJson(std::string path)
 	reader.close();
 	int i = 0;
 	for (auto& person : j) {
+		++i;
 		std::string name = person["name"];
 		std::string surname = person["surname"];
 		int age = person["age"];
-		Person pers(name, surname, age);
+		/*Person pers(name, surname, age);
 		for (auto& contract : person["contracts"])
 		{
 			contrType type = contract["type"];
 			int value = contract["value"];
 			pers.addContract(Contract(type, value));
 		}
-		addPerson(&pers);
+		//addPerson(&pers);*/
+		addPerson(new Person(name, surname, age));
+		for (auto& contract : person["contracts"])
+		{
+			contrType type = contract["type"];
+			int value = contract["value"];
+			editPerson(i, Contract(type, value));
+		}
 	}
 }
 
