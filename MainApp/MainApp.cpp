@@ -23,42 +23,49 @@ int main()
 	}
 	
 	bool end = false;
-	int opt = 0;
-	
+	char opt = '0';
+	std::cout << "What do you want to do?\n1. Generale list of settlements\n2. Generate settlement for one person\n3. Add person\n4. Delete person\n5. Edit person\n6. Exit\n";
+	std::cin >> opt;
+	if (!isdigit(opt))
+		opt = '0';
 	while (!end)
 	{
-		std::cout << "What do you want to do?\n1. Generale list of settlements\n2. Generate settlement for one person\n3. Add person\n4. Delete person\n5. Edit person\n6. Exit\n";
-		std::cin >> opt;
+		
 		switch (opt)
 		{
-		case 1:
+		case '0':
+			std::cout << "Wrong input!\nTry again\n";
+			break;
+		case '1':
 			cInterface.exportListSettlementToJson();
 			std::cout << "Export completed!\n";
 			break;
-		case 2:
+		case '2':
 			cInterface.exportGeneratedSettlementPerson();
 			std::cout << "Export completed!\n";
 			break;
-		case 3:
+		case '3':
 			cInterface.addNewPerson();
 			std::cout << "Operation completed\n";
 			break;
-		case 4:
+		case '4':
 			cInterface.deletePerson();
 			std::cout << "Deleted succesfully\n";
 			break;
-		case 5:
+		case '5':
 			cInterface.editPerson();
 			std::cout << "Operation completed\n";
 			break;
-		case 6:
+		case '6':
 			std::cout << "Thank you for using our services.\n";
 			end = true;
 			continue;
-		default:
-			std::cout << "Wrong input!\nTry again\n";
 		}
-		
+
+		std::cout << "What do you want to do?\n1. Generale list of settlements\n2. Generate settlement for one person\n3. Add person\n4. Delete person\n5. Edit person\n6. Exit\n";
+		std::cin >> opt;
+		if (!isdigit(opt))
+			opt = '0';
 	}
 }
 
