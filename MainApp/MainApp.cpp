@@ -24,13 +24,14 @@ int main()
 	
 	bool end = false;
 	char opt = '0';
-	std::cout << "What do you want to do?\n1. Generale list of settlements\n2. Generate settlement for one person\n3. Add person\n4. Delete person\n5. Edit person\n6. Exit\n";
-	std::cin >> opt;
-	if (!isdigit(opt))
-		opt = '0';
+
 	while (!end)
 	{
-		
+		std::cout << "What do you want to do?\n1. Generale list of settlements\n2. Generate settlement for one person\n3. Add person\n4. Delete person\n5. Edit person\n6. Exit\n";
+		std::cin >> opt;
+		if (!isdigit(opt))
+			opt = '0';
+
 		switch (opt)
 		{
 		case '0':
@@ -62,10 +63,6 @@ int main()
 			continue;
 		}
 
-		std::cout << "What do you want to do?\n1. Generale list of settlements\n2. Generate settlement for one person\n3. Add person\n4. Delete person\n5. Edit person\n6. Exit\n";
-		std::cin >> opt;
-		if (!isdigit(opt))
-			opt = '0';
 	}
 }
 
