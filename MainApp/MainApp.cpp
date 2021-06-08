@@ -1,5 +1,6 @@
 #include "../Treasury/ConsoleInterface.h"
 #include <iostream>
+#include <stdlib.h>
 
 int main()
 {
@@ -31,7 +32,7 @@ int main()
 		std::cin >> opt;
 		if (!isdigit(opt))
 			opt = '0';
-
+		system("CLS");
 		switch (opt)
 		{
 		case '0':
