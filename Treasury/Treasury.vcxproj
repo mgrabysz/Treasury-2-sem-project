@@ -140,7 +140,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Calculator.h" />
-    <ClInclude Include="Collection.h" />
     <ClInclude Include="ConsoleInterface.h" />
     <ClInclude Include="Contract.h" />
     <ClInclude Include="json.h" />
