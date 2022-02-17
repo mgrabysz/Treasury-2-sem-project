@@ -4,7 +4,7 @@
 ### Original content of readme
 PROI 21L
 
-Zespół: Grabysz Marcin, Latosek Bartosz, Szarejko Łukasz
+Zespół: Grabysz Marcin, Latosek Bartosz, [Szarejko Łukasz](https://github.com/szaryvip)
 
 Opis zadania:
 
@@ -18,8 +18,4 @@ Projekt został zrealizowany przy pomocy Visual Studio 2019 oraz z wykorzystanie
 Project made for an academic purpose during the second semester of computer science studies. The program allows to simulate Polish treasury - takes as input information about taxpayer (his earnings, types of his contracts etc.) and returns the value of tax and all obligatory payments.
 
 ### Team members
-Łukasz Szarejko (https://github.com/szaryvip) 
-
-Bartosz Latosek
-
-Marcin Grabysz
+[Łukasz Szarejko](https://github.com/szaryvip), Bartosz Latosek, Marcin Grabysz
