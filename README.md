@@ -1,3 +1,7 @@
+# Treasury simulator
+(english below)
+
+### Original content of readme
 PROI 21L
 
 Zespół: Grabysz Marcin, Latosek Bartosz, Szarejko Łukasz
@@ -9,3 +13,13 @@ Należy stworzyć system dla urzędu skarbowego do rozliczania ludzi oraz przed-
 Środowisko i testy:
 
 Projekt został zrealizowany przy pomocy Visual Studio 2019 oraz z wykorzystaniem Testów na Frameworku Microsoftowym.
+
+### Project description
+Project made for academic purpose during second semester of computer science studies. Program allows to simulate Polish treasury - takes as input information about taxpayer (his earnings, types of his contracts etc.) and returns value of tax and all obligatory payments.
+
+### Team members
+Łukasz Szarejko (https://github.com/szaryvip) 
+
+Bartosz Latosek
+
+Marcin Grabysz
